@@ -751,6 +751,9 @@ export default function App() {
               <img src="/images/취향가옥2포스터.jpg" alt="취향가옥2 포스터" style={{width:"100%",marginTop:24,borderRadius:2,boxShadow:"0 8px 28px rgba(0,0,0,.13)",display:"block"}}/>
             </div>
             <div>
+              <p style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:18,fontWeight:300,lineHeight:1.8,color:"#7860b8",marginBottom:26,fontStyle:"italic"}}>
+                "아름다움은 사물들 자체 안에 존재하는 성질이 아니다. 그것은 오직 사물들을 관찰하는 정신 안에만 존재하며, 각각의 정신은 서로 다른 아름다움을 지각한다."
+              </p>
               <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:16,fontWeight:300,lineHeight:2.1,color:"#2e2e2e",marginBottom:22}}>
                 수업의 일환으로 다 함께 방문한 전시였다. 예상보다 훨씬 신선한 경험이었는데, 미술 작품이 가구처럼 공간 안에서 기능할 수 있다는 것을 처음으로 체감한 전시였기 때문이다.
               </p>
