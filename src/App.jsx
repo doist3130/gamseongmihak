@@ -30,6 +30,11 @@ html{scroll-behavior:smooth;}
 .dark-tag{display:inline-block;padding:3px 10px;border:1px solid rgba(255,255,255,.17);border-radius:20px;font-family:'Pretendard',sans-serif;font-size:10px;font-weight:300;color:rgba(255,255,255,.5);}
 .close-btn{position:absolute;top:18px;right:20px;background:none;border:none;font-size:22px;opacity:.4;transition:opacity .2s;line-height:1;}
 .close-btn:hover{opacity:.9;}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1);}
+.reveal.is-visible{opacity:1;transform:translateY(0);}
+.reveal:nth-child(2){transition-delay:.08s;}
+.reveal:nth-child(3){transition-delay:.16s;}
+.reveal:nth-child(4){transition-delay:.24s;}
 `;
 
 const ERAS = [
@@ -368,7 +373,7 @@ function Intro() {
       <div style={{maxWidth:960,margin:"0 auto",width:"100%",display:"grid",gridTemplateColumns:"220px 1fr",gap:80,alignItems:"start"}}>
         <div>
           <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:10,letterSpacing:".22em",fontWeight:300,color:"#b0b0b0",marginBottom:16}}>INTRODUCTION</p>
-          <h2 style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:40,fontWeight:300,color:"#1a1820",lineHeight:1.25}}>들어가며</h2>
+          <h2 className="reveal" style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:40,fontWeight:300,color:"#1a1820",lineHeight:1.25}}>들어가며</h2>
         </div>
         <div>
           <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:17,fontWeight:300,lineHeight:2.15,color:"#2e2e2e",marginBottom:28}}>
@@ -393,7 +398,7 @@ function Intro() {
 
 function EraCard({ era, onClick }) {
   return (
-    <div className="era-card" data-h="1" onClick={()=>onClick(era)}>
+    <div className="era-card reveal" data-h="1" onClick={()=>onClick(era)}>
       <div style={{height:4,background:era.grad}}/>
       <div style={{padding:"26px 22px 22px"}}>
         <p style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:12,letterSpacing:".1em",color:"#c8c8c8",marginBottom:10}}>{era.num}</p>
@@ -424,7 +429,7 @@ function ErasSection({ onCardClick }) {
       <div style={{maxWidth:1200,margin:"0 auto"}}>
         <div style={{marginBottom:56}}>
           <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:10,letterSpacing:".22em",fontWeight:300,color:"#b0b0b0",marginBottom:14}}>TIMELINE · 시대별 필기</p>
-          <h2 style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:46,fontWeight:300,color:"#1a1820",lineHeight:1.2}}>원시에서<br/>현대까지</h2>
+          <h2 className="reveal" style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:46,fontWeight:300,color:"#1a1820",lineHeight:1.2}}>원시에서<br/>현대까지</h2>
         </div>
         <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:16}}>
           {ERAS.map(e=><EraCard key={e.id} era={e} onClick={onCardClick}/>)}
@@ -439,7 +444,7 @@ function ErasSection({ onCardClick }) {
 
 function MovieCard({ movie, onClick }) {
   return (
-    <div className="movie-card" data-h="1" onClick={()=>onClick(movie)} style={{background:movie.bg}}>
+    <div className="movie-card reveal" data-h="1" onClick={()=>onClick(movie)} style={{background:movie.bg}}>
       <div style={{padding:"36px 28px 30px"}}>
         <p style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:12,fontStyle:"italic",letterSpacing:".06em",color:"rgba(255,255,255,.35)",marginBottom:16}}>{movie.year}</p>
         <h3 style={{fontFamily:"'Pretendard',sans-serif",fontSize:19,fontWeight:400,color:"white",lineHeight:1.45,marginBottom:6}}>{movie.title}</h3>
@@ -462,7 +467,7 @@ function MoviesSection({ onCardClick }) {
       <div style={{maxWidth:1200,margin:"0 auto"}}>
         <div style={{marginBottom:56}}>
           <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:10,letterSpacing:".22em",fontWeight:300,color:"rgba(255,255,255,.28)",marginBottom:14}}>FILMS · 수업에서 본 영화</p>
-          <h2 style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:46,fontWeight:300,color:"white",lineHeight:1.2}}>예술가를<br/>스크린에서 만나다</h2>
+          <h2 className="reveal" style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:46,fontWeight:300,color:"white",lineHeight:1.2}}>예술가를<br/>스크린에서 만나다</h2>
         </div>
         <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:16}}>
           {MOVIES.map(m=><MovieCard key={m.id} movie={m} onClick={onCardClick}/>)}
@@ -729,9 +734,22 @@ export default function App() {
     const onOver = e => setBig(!!e.target.closest("[data-h]"));
     window.addEventListener("mousemove", onMove);
     document.addEventListener("mouseover", onOver);
+
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold:0.15, rootMargin:"0px 0px -40px 0px" });
+    const revealEls = document.querySelectorAll(".reveal");
+    revealEls.forEach(el=>io.observe(el));
+
     return ()=>{
       window.removeEventListener("mousemove", onMove);
       document.removeEventListener("mouseover", onOver);
+      io.disconnect();
       if (document.head.contains(styleEl)) document.head.removeChild(styleEl);
     };
   },[]);
@@ -749,7 +767,7 @@ export default function App() {
           <div style={{maxWidth:960,margin:"0 auto",display:"grid",gridTemplateColumns:"220px 1fr",gap:80,alignItems:"center"}}>
             <div>
               <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:10,letterSpacing:".22em",fontWeight:300,color:"#b0b0b0",marginBottom:16}}>EXHIBITION · 전시</p>
-              <h2 style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:36,fontWeight:300,color:"#1a1820",lineHeight:1.3}}>디뮤지엄<br/>〈취향가옥2〉</h2>
+              <h2 className="reveal" style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:36,fontWeight:300,color:"#1a1820",lineHeight:1.3}}>디뮤지엄<br/>〈취향가옥2〉</h2>
               <img src="/images/취향가옥2포스터.jpg" alt="취향가옥2 포스터" style={{width:"100%",marginTop:24,borderRadius:2,boxShadow:"0 8px 28px rgba(0,0,0,.13)",display:"block"}}/>
             </div>
             <div>
@@ -788,7 +806,7 @@ export default function App() {
           <div style={{maxWidth:960,margin:"0 auto"}}>
             <div style={{marginBottom:56}}>
               <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:10,letterSpacing:".22em",fontWeight:300,color:"#b0b0b0",marginBottom:14}}>PRESENTATIONS · 팀 발표</p>
-              <h2 style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:46,fontWeight:300,color:"#1a1820",lineHeight:1.2}}>네 번의<br/>발표</h2>
+              <h2 className="reveal" style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:46,fontWeight:300,color:"#1a1820",lineHeight:1.2}}>네 번의<br/>발표</h2>
             </div>
             <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:32}}>
               {[
@@ -797,7 +815,7 @@ export default function App() {
                 { num:"03", slug:"modern-artists", title:"근현대 화가", cover:"/images/근현대미술작가표지.png", body:"이중섭, 김환기, 천경자, 김창열. 이 네 명의 화가가 모두 한국이 가장 힘들었던 시기를 함께했고, 그 아픔을 작품으로 승화시켰다는 공통점이 있었다. 근현대 한국의 다사다난함을 이들의 그림으로나마 간접 체험할 수 있다는 것, 그 자체가 이 발표의 의미였다. 다만 솔직히 준비가 부족했던 발표였어서, 지금 돌아보면 아쉬움이 많이 남는다." },
                 { num:"04", slug:"minhwa-ukiyoe", title:"우키요에와 민화", cover:"/images/우키요에민화표지.png", body:"솔직히 가장 힘들었던 발표였다. 민화는 작자 미상에 바리에이션도 다양하고 현대까지 이어지는 살아있는 사조라 자료 찾기가 쉽지 않았다. 그럼에도 도상 안에 담긴 의미를 공부하면서, 선조들이 그림에 어떤 소망을 담았는지를 생각해볼 수 있었다. 교수님의 작품 또한 조사할 수 있어 감사한 기회였다고 생각한다." },
               ].map(p=>(
-                <Link key={p.num} to={`/presentation/${p.slug}`} data-h="1" className="ppt-card" style={{borderTop:"1px solid rgba(0,0,0,.08)",paddingTop:24,textDecoration:"none",display:"block"}}>
+                <Link key={p.num} to={`/presentation/${p.slug}`} data-h="1" className="ppt-card reveal" style={{borderTop:"1px solid rgba(0,0,0,.08)",paddingTop:24,textDecoration:"none",display:"block"}}>
                   {p.cover && (
                     <img className="ppt-cover" src={p.cover} alt={p.title} style={{width:"100%",height:170,objectFit:"cover",objectPosition:"center top",borderRadius:2,marginBottom:18,display:"block",boxShadow:"0 4px 16px rgba(0,0,0,.1)"}}/>
                   )}
