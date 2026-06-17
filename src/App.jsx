@@ -790,34 +790,21 @@ export default function App() {
             </div>
             <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:32}}>
               {[
-                { num:"01", title:"학우들의 그림을 미술치료로 분석하기", cover:"/images/미술치료표지.png", body:"학우들의 그림을 분석하는 과정이었다. 얼굴의 형태, 선의 강도, 집·사람·나무의 배치에서 의미를 찾아냈다. 사람마다 그린 그림은 달랐지만 분석 결과에서 경향성이 나타난다는 게 신기했다. 아무 생각 없이 그린 것 같아도 그 안에 자신이 담긴다는 것. 미술이 가진 힘을 조금 다른 방식으로 알게 된 시간이었다." },
-                { num:"02", title:"루브르 박물관의 모든 것", cover:"/images/루브르표지.png", body:"내가 직접 다녀왔고 큐레이션도 들어본 박물관이라 조사하는 내내 신이 났다. 어떤 역사를 거쳐 만들어졌고, 어떤 작품들로 지금 빛나고 있는지를 새롭게 이해하는 과정이었다. 다음에 다시 가게 된다면 이번 조사에서 알게 된 것들을 발판 삼아 훨씬 더 깊이 돌아볼 수 있을 것 같다." },
-                { num:"03", title:"근현대 화가", cover:"/images/근현대미술작가표지.png", body:"이중섭, 김환기, 천경자, 김창열. 이 네 명의 화가가 모두 한국이 가장 힘들었던 시기를 함께했고, 그 아픔을 작품으로 승화시켰다는 공통점이 있었다. 근현대 한국의 다사다난함을 이들의 그림으로나마 간접 체험할 수 있다는 것, 그 자체가 이 발표의 의미였다." },
-                { num:"04", title:"우키요에와 민화", cover:"/images/우키요에민화표지.png", body:"솔직히 가장 힘들었던 발표였다. 민화는 작자 미상에 바리에이션도 다양하고 현대까지 이어지는 살아있는 사조라 자료 찾기가 쉽지 않았다. 그럼에도 도상 안에 담긴 의미를 공부하면서, 선조들이 그림에 어떤 소망을 담았는지를 생각해볼 수 있었다." },
+                { num:"01", slug:"art-therapy", title:"학우들의 그림을 미술치료로 분석하기", cover:"/images/미술치료표지.png", body:"학우들의 그림을 분석하는 과정이었다. 얼굴의 형태, 선의 강도, 집·사람·나무의 배치에서 의미를 찾아냈다. 사람마다 그린 그림은 달랐지만 분석 결과에서 경향성이 나타난다는 게 신기했다. 아무 생각 없이 그린 것 같아도 그 안에 자신이 담긴다는 것. 미술이 가진 힘을 조금 다른 방식으로 알게 된 시간이었다." },
+                { num:"02", slug:"louvre", title:"루브르 박물관의 모든 것", cover:"/images/루브르표지.png", body:"내가 직접 다녀왔고 큐레이션도 들어본 박물관이라 조사하는 내내 신이 났다. 어떤 역사를 거쳐 만들어졌고, 어떤 작품들로 지금 빛나고 있는지를 새롭게 이해하는 과정이었다. 다음에 다시 가게 된다면 이번 조사에서 알게 된 것들을 발판 삼아 훨씬 더 깊이 돌아볼 수 있을 것 같다." },
+                { num:"03", slug:"modern-artists", title:"근현대 화가", cover:"/images/근현대미술작가표지.png", body:"이중섭, 김환기, 천경자, 김창열. 이 네 명의 화가가 모두 한국이 가장 힘들었던 시기를 함께했고, 그 아픔을 작품으로 승화시켰다는 공통점이 있었다. 근현대 한국의 다사다난함을 이들의 그림으로나마 간접 체험할 수 있다는 것, 그 자체가 이 발표의 의미였다." },
+                { num:"04", slug:"minhwa-ukiyoe", title:"우키요에와 민화", cover:"/images/우키요에민화표지.png", body:"솔직히 가장 힘들었던 발표였다. 민화는 작자 미상에 바리에이션도 다양하고 현대까지 이어지는 살아있는 사조라 자료 찾기가 쉽지 않았다. 그럼에도 도상 안에 담긴 의미를 공부하면서, 선조들이 그림에 어떤 소망을 담았는지를 생각해볼 수 있었다." },
               ].map(p=>(
-                <div key={p.num} style={{borderTop:"1px solid rgba(0,0,0,.08)",paddingTop:24}}>
+                <Link key={p.num} to={`/presentation/${p.slug}`} data-h="1" style={{borderTop:"1px solid rgba(0,0,0,.08)",paddingTop:24,textDecoration:"none",display:"block",cursor:"none"}}>
                   {p.cover && (
                     <img src={p.cover} alt={p.title} style={{width:"100%",height:170,objectFit:"cover",objectPosition:"center top",borderRadius:2,marginBottom:18,display:"block",boxShadow:"0 4px 16px rgba(0,0,0,.1)"}}/>
                   )}
                   <p style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:12,color:"#c8c8c8",marginBottom:8,letterSpacing:".08em"}}>{p.num}</p>
                   <h3 style={{fontFamily:"'Pretendard',sans-serif",fontSize:16,fontWeight:400,color:"#1a1820",marginBottom:14,lineHeight:1.5}}>{p.title}</h3>
-                  <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:13,fontWeight:300,lineHeight:2.0,color:"#666"}}>{p.body}</p>
-                </div>
+                  <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:13,fontWeight:300,lineHeight:2.0,color:"#666",marginBottom:14}}>{p.body}</p>
+                  <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:11,fontWeight:300,letterSpacing:".06em",color:"#b0aac8"}}>발표 자료 보기 →</p>
+                </Link>
               ))}
-            </div>
-            <div style={{marginTop:44,paddingTop:36,borderTop:"1px solid rgba(0,0,0,.08)"}}>
-              <Link to="/presentation-detail" data-h="1" style={{
-                display:"inline-flex",alignItems:"center",gap:10,
-                padding:"12px 24px",border:"1px solid rgba(0,0,0,.14)",borderRadius:2,
-                fontFamily:"'Pretendard',sans-serif",fontSize:11,fontWeight:300,
-                letterSpacing:".1em",color:"#555",textDecoration:"none",
-                background:"transparent",transition:"all .2s",
-              }}
-                onMouseEnter={e=>{e.currentTarget.style.background="rgba(200,182,255,.1)";e.currentTarget.style.borderColor="rgba(200,182,255,.5)";e.currentTarget.style.color="#7860b8";}}
-                onMouseLeave={e=>{e.currentTarget.style.background="transparent";e.currentTarget.style.borderColor="rgba(0,0,0,.14)";e.currentTarget.style.color="#555";}}
-              >
-                발표 상세 페이지 바로가기 →
-              </Link>
             </div>
           </div>
         </section>
