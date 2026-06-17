@@ -397,7 +397,7 @@ function EraCard({ era, onClick }) {
       <div style={{height:4,background:era.grad}}/>
       <div style={{padding:"26px 22px 22px"}}>
         <p style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:12,letterSpacing:".1em",color:"#c8c8c8",marginBottom:10}}>{era.num}</p>
-        <h3 style={{fontFamily:"'Pretendard',sans-serif",fontSize:19,fontWeight:400,color:"#1a1820",marginBottom:3,lineHeight:1.3}}>{era.title}</h3>
+        <h3 style={{fontFamily:"'Pretendard',sans-serif",fontSize:19,fontWeight:400,color:"#1a1820",marginBottom:3,lineHeight:1.3,wordBreak:"keep-all"}}>{era.title}</h3>
         <p style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:12,fontStyle:"italic",color:"#b0b0b0",marginBottom:3}}>{era.en}</p>
         <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:10,color:"#d0d0d0",letterSpacing:".05em",marginBottom:18}}>{era.period}</p>
         <div style={{display:"flex",flexWrap:"wrap",gap:5,marginBottom:18}}>
