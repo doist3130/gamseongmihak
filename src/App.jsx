@@ -18,10 +18,15 @@ html{scroll-behavior:smooth;}
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;
   background-clip:text;animation:holoShimmer 6s ease infinite;
 }
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1);}
+.reveal.is-visible{opacity:1;transform:translateY(0);}
+.reveal:nth-child(2){transition-delay:.08s;}
+.reveal:nth-child(3){transition-delay:.16s;}
+.reveal:nth-child(4){transition-delay:.24s;}
 .era-card{background:#fff;border:1px solid rgba(0,0,0,.07);border-radius:3px;overflow:hidden;transition:transform .35s ease,box-shadow .35s ease;}
-.era-card:hover{transform:translateY(-8px) rotate(-.25deg);box-shadow:0 24px 48px rgba(0,0,0,.1);}
+.era-card.is-visible:hover{transform:translateY(-8px) rotate(-.25deg);box-shadow:0 24px 48px rgba(0,0,0,.1);}
 .movie-card{border-radius:3px;overflow:hidden;transition:transform .35s ease,box-shadow .35s ease;}
-.movie-card:hover{transform:translateY(-7px);box-shadow:0 22px 44px rgba(0,0,0,.25);}
+.movie-card.is-visible:hover{transform:translateY(-7px);box-shadow:0 22px 44px rgba(0,0,0,.25);}
 .ppt-cover{transition:transform .35s ease,box-shadow .35s ease;}
 .ppt-card:hover .ppt-cover{transform:translateY(-8px) rotate(.25deg);box-shadow:0 24px 48px rgba(0,0,0,.22);}
 .nav-a{font-family:'Pretendard',sans-serif;font-size:11px;font-weight:300;letter-spacing:.12em;text-decoration:none;color:rgba(255,255,255,.55);transition:color .2s;}
@@ -30,11 +35,6 @@ html{scroll-behavior:smooth;}
 .dark-tag{display:inline-block;padding:3px 10px;border:1px solid rgba(255,255,255,.17);border-radius:20px;font-family:'Pretendard',sans-serif;font-size:10px;font-weight:300;color:rgba(255,255,255,.5);}
 .close-btn{position:absolute;top:18px;right:20px;background:none;border:none;font-size:22px;opacity:.4;transition:opacity .2s;line-height:1;}
 .close-btn:hover{opacity:.9;}
-.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1);}
-.reveal.is-visible{opacity:1;transform:translateY(0);}
-.reveal:nth-child(2){transition-delay:.08s;}
-.reveal:nth-child(3){transition-delay:.16s;}
-.reveal:nth-child(4){transition-delay:.24s;}
 `;
 
 const ERAS = [
