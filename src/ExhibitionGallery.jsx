@@ -21,6 +21,8 @@ function imgs(slug, count) {
   return Array.from({ length: count }, (_, i) => `/images/exhibition/${slug}/${i+1}.jpg`);
 }
 
+const ALL_IMAGES = SECTIONS.flatMap(sec => imgs(sec.slug, sec.count));
+
 const STYLE = `
 .collage-grid{column-count:2;column-gap:13px;}
 @media(min-width:640px){.collage-grid{column-count:3;}}
@@ -36,19 +38,25 @@ const STYLE = `
 `;
 
 export default function ExhibitionGallery() {
-  const [lightbox, setLightbox] = useState(null);
+  const [lightboxIdx, setLightboxIdx] = useState(null);
 
   useEffect(() => {
     const styleEl = document.createElement("style");
     styleEl.textContent = STYLE;
     document.head.appendChild(styleEl);
-    const onKey = (e) => { if (e.key === "Escape") setLightbox(null); };
-    window.addEventListener("keydown", onKey);
-    return () => {
-      document.head.removeChild(styleEl);
-      window.removeEventListener("keydown", onKey);
-    };
+    return () => document.head.removeChild(styleEl);
   }, []);
+
+  useEffect(() => {
+    if (lightboxIdx === null) return;
+    const onKey = (e) => {
+      if (e.key === "Escape") setLightboxIdx(null);
+      else if (e.key === "ArrowRight") setLightboxIdx(i => (i + 1) % ALL_IMAGES.length);
+      else if (e.key === "ArrowLeft") setLightboxIdx(i => (i - 1 + ALL_IMAGES.length) % ALL_IMAGES.length);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [lightboxIdx]);
 
   return (
     <div style={{minHeight:"100vh",background:"#08080f"}}>
@@ -115,7 +123,7 @@ export default function ExhibitionGallery() {
                   src={src}
                   alt={`${sec.title} ${i+1}`}
                   loading="lazy"
-                  onClick={() => setLightbox(src)}
+                  onClick={() => setLightboxIdx(ALL_IMAGES.indexOf(src))}
                 />
               ))}
             </div>
@@ -134,9 +142,9 @@ export default function ExhibitionGallery() {
         </Link>
       </div>
 
-      {lightbox && (
+      {lightboxIdx !== null && (
         <div
-          onClick={() => setLightbox(null)}
+          onClick={() => setLightboxIdx(null)}
           style={{
             position:"fixed",inset:0,zIndex:200,background:"rgba(4,4,8,.92)",
             display:"flex",alignItems:"center",justifyContent:"center",
@@ -144,12 +152,36 @@ export default function ExhibitionGallery() {
           }}
         >
           <img
-            src={lightbox}
+            src={ALL_IMAGES[lightboxIdx]}
             alt=""
             style={{maxWidth:"100%",maxHeight:"100%",borderRadius:4,boxShadow:"0 24px 64px rgba(0,0,0,.6)"}}
           />
           <button
-            onClick={() => setLightbox(null)}
+            onClick={(e) => { e.stopPropagation(); setLightboxIdx(i => (i - 1 + ALL_IMAGES.length) % ALL_IMAGES.length); }}
+            style={{
+              position:"fixed",left:20,top:"50%",transform:"translateY(-50%)",background:"none",border:"none",
+              color:"rgba(255,255,255,.6)",fontSize:36,cursor:"pointer",lineHeight:1,padding:10,
+            }}
+          >
+            ‹
+          </button>
+          <button
+            onClick={(e) => { e.stopPropagation(); setLightboxIdx(i => (i + 1) % ALL_IMAGES.length); }}
+            style={{
+              position:"fixed",right:20,top:"50%",transform:"translateY(-50%)",background:"none",border:"none",
+              color:"rgba(255,255,255,.6)",fontSize:36,cursor:"pointer",lineHeight:1,padding:10,
+            }}
+          >
+            ›
+          </button>
+          <span style={{
+            position:"fixed",bottom:24,left:"50%",transform:"translateX(-50%)",
+            fontFamily:"'Pretendard',sans-serif",fontSize:11,color:"rgba(255,255,255,.4)",
+          }}>
+            {lightboxIdx+1} / {ALL_IMAGES.length}
+          </span>
+          <button
+            onClick={() => setLightboxIdx(null)}
             style={{
               position:"fixed",top:24,right:32,background:"none",border:"none",
               color:"rgba(255,255,255,.6)",fontSize:28,cursor:"pointer",lineHeight:1,

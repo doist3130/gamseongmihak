@@ -33,13 +33,23 @@ function slides(slug, count) {
 export default function PresentationDetail() {
   const { slug } = useParams();
   const data = PRESENTATIONS[slug];
-  const [lightbox, setLightbox] = useState(null);
+  const [lightboxIdx, setLightboxIdx] = useState(null);
+  const deckSlides = data ? slides(slug, data.count) : [];
 
   useEffect(() => {
-    const onKey = (e) => { if (e.key === "Escape") setLightbox(null); };
+    setLightboxIdx(null);
+  }, [slug]);
+
+  useEffect(() => {
+    if (lightboxIdx === null) return;
+    const onKey = (e) => {
+      if (e.key === "Escape") setLightboxIdx(null);
+      else if (e.key === "ArrowRight") setLightboxIdx(i => (i + 1) % deckSlides.length);
+      else if (e.key === "ArrowLeft") setLightboxIdx(i => (i - 1 + deckSlides.length) % deckSlides.length);
+    };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, []);
+  }, [lightboxIdx, deckSlides.length]);
 
   if (!data) {
     return (
@@ -105,13 +115,13 @@ export default function PresentationDetail() {
           maxWidth:880,margin:"0 auto",
           display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(320px,1fr))",gap:18,
         }}>
-          {slides(slug, data.count).map((src, i) => (
+          {deckSlides.map((src, i) => (
             <div key={src} style={{position:"relative"}}>
               <img
                 src={src}
                 alt={`${data.title} 슬라이드 ${i+1}`}
                 loading="lazy"
-                onClick={() => setLightbox(src)}
+                onClick={() => setLightboxIdx(i)}
                 style={{
                   width:"100%",display:"block",borderRadius:3,cursor:"pointer",
                   boxShadow:"0 4px 16px rgba(0,0,0,.1)",
@@ -155,9 +165,9 @@ export default function PresentationDetail() {
         </Link>
       </div>
 
-      {lightbox && (
+      {lightboxIdx !== null && (
         <div
-          onClick={() => setLightbox(null)}
+          onClick={() => setLightboxIdx(null)}
           style={{
             position:"fixed",inset:0,zIndex:200,background:"rgba(10,10,14,.9)",
             display:"flex",alignItems:"center",justifyContent:"center",
@@ -165,12 +175,36 @@ export default function PresentationDetail() {
           }}
         >
           <img
-            src={lightbox}
+            src={deckSlides[lightboxIdx]}
             alt=""
             style={{maxWidth:"100%",maxHeight:"100%",borderRadius:4,boxShadow:"0 24px 64px rgba(0,0,0,.5)"}}
           />
           <button
-            onClick={() => setLightbox(null)}
+            onClick={(e) => { e.stopPropagation(); setLightboxIdx(i => (i - 1 + deckSlides.length) % deckSlides.length); }}
+            style={{
+              position:"fixed",left:20,top:"50%",transform:"translateY(-50%)",background:"none",border:"none",
+              color:"rgba(255,255,255,.7)",fontSize:36,cursor:"pointer",lineHeight:1,padding:10,
+            }}
+          >
+            ‹
+          </button>
+          <button
+            onClick={(e) => { e.stopPropagation(); setLightboxIdx(i => (i + 1) % deckSlides.length); }}
+            style={{
+              position:"fixed",right:20,top:"50%",transform:"translateY(-50%)",background:"none",border:"none",
+              color:"rgba(255,255,255,.7)",fontSize:36,cursor:"pointer",lineHeight:1,padding:10,
+            }}
+          >
+            ›
+          </button>
+          <span style={{
+            position:"fixed",bottom:24,left:"50%",transform:"translateX(-50%)",
+            fontFamily:"'Pretendard',sans-serif",fontSize:11,color:"rgba(255,255,255,.5)",
+          }}>
+            {lightboxIdx+1} / {deckSlides.length}
+          </span>
+          <button
+            onClick={() => setLightboxIdx(null)}
             style={{
               position:"fixed",top:24,right:32,background:"none",border:"none",
               color:"rgba(255,255,255,.7)",fontSize:28,cursor:"pointer",lineHeight:1,
