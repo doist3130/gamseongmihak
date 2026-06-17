@@ -11,33 +11,33 @@ export default function ExhibitionGallery() {
         borderBottom:"1px solid rgba(255,255,255,.06)",
       }}>
         <Link to="/" style={{
-          fontFamily:"'Noto Sans KR',sans-serif",fontSize:11,fontWeight:300,
+          fontFamily:"'Pretendard',sans-serif",fontSize:11,fontWeight:300,
           letterSpacing:".12em",color:"rgba(255,255,255,.45)",textDecoration:"none",
           display:"flex",alignItems:"center",gap:8,
         }}>
           <span style={{fontSize:14,opacity:.6}}>←</span> 메인으로 돌아가기
         </Link>
-        <p style={{fontFamily:"'Cormorant Garamond',serif",fontSize:13,fontStyle:"italic",color:"rgba(255,255,255,.2)"}}>
+        <p style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:13,fontStyle:"italic",color:"rgba(255,255,255,.2)"}}>
           Exhibition Gallery
         </p>
       </nav>
 
       <div style={{flex:1,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",padding:"100px 44px"}}>
         <p style={{
-          fontFamily:"'Noto Sans KR',sans-serif",fontSize:10,letterSpacing:".28em",fontWeight:300,
+          fontFamily:"'Pretendard',sans-serif",fontSize:10,letterSpacing:".28em",fontWeight:300,
           color:"rgba(255,255,255,.22)",marginBottom:24,
         }}>
           EXHIBITION GALLERY · 전시 사진
         </p>
         <h1 style={{
-          fontFamily:"'Cormorant Garamond',serif",
+          fontFamily:"'HsBombaram30',sans-serif",
           fontSize:"clamp(36px,5vw,64px)",fontWeight:300,color:"rgba(255,255,255,.85)",
           textAlign:"center",lineHeight:1.3,marginBottom:20,
         }}>
           디뮤지엄<br/>〈취향가옥 2〉
         </h1>
         <p style={{
-          fontFamily:"'Noto Serif KR',serif",fontSize:14,fontWeight:300,lineHeight:2.0,
+          fontFamily:"'Pretendard',sans-serif",fontSize:14,fontWeight:300,lineHeight:2.0,
           color:"rgba(255,255,255,.3)",textAlign:"center",maxWidth:400,marginBottom:60,
         }}>
           전시에서 찍어온 사진들을 이곳에 정리할 예정입니다.
@@ -55,7 +55,7 @@ export default function ExhibitionGallery() {
           }}>
             <span style={{fontSize:20,color:"rgba(200,182,255,.3)"}}>+</span>
           </div>
-          <p style={{fontFamily:"'Noto Sans KR',sans-serif",fontSize:11,fontWeight:300,color:"rgba(255,255,255,.18)",letterSpacing:".06em"}}>
+          <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:11,fontWeight:300,color:"rgba(255,255,255,.18)",letterSpacing:".06em"}}>
             사진을 추가할 예정
           </p>
         </div>

@@ -2,8 +2,6 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const STYLE = `
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Sans+KR:wght@300;400;500&family=Noto+Serif+KR:wght@300;400;600&display=swap');
-
 *,*::before,*::after{cursor:none!important;box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
 
@@ -24,10 +22,10 @@ html{scroll-behavior:smooth;}
 .era-card:hover{transform:translateY(-8px) rotate(-.25deg);box-shadow:0 24px 48px rgba(0,0,0,.1);}
 .movie-card{border-radius:3px;overflow:hidden;transition:transform .35s ease,box-shadow .35s ease;}
 .movie-card:hover{transform:translateY(-7px);box-shadow:0 22px 44px rgba(0,0,0,.25);}
-.nav-a{font-family:'Noto Sans KR',sans-serif;font-size:11px;font-weight:300;letter-spacing:.12em;text-decoration:none;color:rgba(255,255,255,.55);transition:color .2s;}
+.nav-a{font-family:'Pretendard',sans-serif;font-size:11px;font-weight:300;letter-spacing:.12em;text-decoration:none;color:rgba(255,255,255,.55);transition:color .2s;}
 .nav-a:hover{color:#fff;}
-.tag{display:inline-block;padding:3px 10px;border:1px solid rgba(0,0,0,.12);border-radius:20px;font-family:'Noto Sans KR',sans-serif;font-size:10px;font-weight:300;letter-spacing:.04em;color:#666;}
-.dark-tag{display:inline-block;padding:3px 10px;border:1px solid rgba(255,255,255,.17);border-radius:20px;font-family:'Noto Sans KR',sans-serif;font-size:10px;font-weight:300;color:rgba(255,255,255,.5);}
+.tag{display:inline-block;padding:3px 10px;border:1px solid rgba(0,0,0,.12);border-radius:20px;font-family:'Pretendard',sans-serif;font-size:10px;font-weight:300;letter-spacing:.04em;color:#666;}
+.dark-tag{display:inline-block;padding:3px 10px;border:1px solid rgba(255,255,255,.17);border-radius:20px;font-family:'Pretendard',sans-serif;font-size:10px;font-weight:300;color:rgba(255,255,255,.5);}
 .close-btn{position:absolute;top:18px;right:20px;background:none;border:none;font-size:22px;opacity:.4;transition:opacity .2s;line-height:1;}
 .close-btn:hover{opacity:.9;}
 `;
@@ -345,20 +343,20 @@ function Hero() {
         }}/>
       ))}
       <div style={{textAlign:"center",position:"relative",zIndex:1,padding:"0 24px"}}>
-        <p style={{fontFamily:"'Noto Sans KR',sans-serif",fontSize:10,fontWeight:300,letterSpacing:".3em",color:"rgba(255,255,255,.35)",marginBottom:36,animation:"fadeSlideUp .8s ease .2s both"}}>
+        <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:10,fontWeight:300,letterSpacing:".3em",color:"rgba(255,255,255,.35)",marginBottom:36,animation:"fadeSlideUp .8s ease .2s both"}}>
           2026 · 감성미학 개인과제
         </p>
-        <h1 style={{fontFamily:"'Cormorant Garamond',serif",fontSize:"clamp(52px,8.5vw,100px)",fontWeight:300,lineHeight:1.12,color:"white",animation:"fadeSlideUp .8s ease .4s both"}}>
+        <h1 style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:"clamp(52px,8.5vw,100px)",fontWeight:300,lineHeight:1.12,color:"white",animation:"fadeSlideUp .8s ease .4s both"}}>
           미학이라는 이름의
         </h1>
-        <h1 className="holo-text" style={{fontFamily:"'Cormorant Garamond',serif",fontSize:"clamp(52px,8.5vw,100px)",fontWeight:300,lineHeight:1.12,marginBottom:44,animation:"fadeSlideUp .8s ease .5s both"}}>
+        <h1 className="holo-text" style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:"clamp(52px,8.5vw,100px)",fontWeight:300,lineHeight:1.12,marginBottom:44,animation:"fadeSlideUp .8s ease .5s both"}}>
           필기 전시장
         </h1>
-        <p style={{fontFamily:"'Noto Sans KR',sans-serif",fontSize:14,fontWeight:300,lineHeight:2.0,color:"rgba(255,255,255,.45)",maxWidth:380,margin:"0 auto 60px",animation:"fadeSlideUp .8s ease .7s both"}}>
+        <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:14,fontWeight:300,lineHeight:2.0,color:"rgba(255,255,255,.45)",maxWidth:380,margin:"0 auto 60px",animation:"fadeSlideUp .8s ease .7s both"}}>
           한 학기 동안의 수업을<br/>기억의 흐름을 따라 다시 걷습니다
         </p>
         <div style={{display:"flex",flexDirection:"column",alignItems:"center",gap:10,animation:"fadeSlideUp .8s ease .9s both"}}>
-          <p style={{fontFamily:"'Noto Sans KR',sans-serif",fontSize:10,letterSpacing:".22em",fontWeight:300,color:"rgba(255,255,255,.25)"}}>scroll</p>
+          <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:10,letterSpacing:".22em",fontWeight:300,color:"rgba(255,255,255,.25)"}}>scroll</p>
           <div style={{width:1,height:44,background:"linear-gradient(to bottom,rgba(255,255,255,.3),transparent)",animation:"scrollPulse 2.2s ease infinite"}}/>
         </div>
       </div>
@@ -371,21 +369,21 @@ function Intro() {
     <section id="intro" style={{background:"#f7f6f2",minHeight:"100vh",display:"flex",alignItems:"center",padding:"100px 44px"}}>
       <div style={{maxWidth:960,margin:"0 auto",width:"100%",display:"grid",gridTemplateColumns:"220px 1fr",gap:80,alignItems:"start"}}>
         <div>
-          <p style={{fontFamily:"'Noto Sans KR',sans-serif",fontSize:10,letterSpacing:".22em",fontWeight:300,color:"#b0b0b0",marginBottom:16}}>INTRODUCTION</p>
-          <h2 style={{fontFamily:"'Cormorant Garamond',serif",fontSize:40,fontWeight:300,color:"#1a1820",lineHeight:1.25}}>들어가며</h2>
+          <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:10,letterSpacing:".22em",fontWeight:300,color:"#b0b0b0",marginBottom:16}}>INTRODUCTION</p>
+          <h2 style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:40,fontWeight:300,color:"#1a1820",lineHeight:1.25}}>들어가며</h2>
         </div>
         <div>
-          <p style={{fontFamily:"'Noto Serif KR',serif",fontSize:17,fontWeight:300,lineHeight:2.15,color:"#2e2e2e",marginBottom:28}}>
+          <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:17,fontWeight:300,lineHeight:2.15,color:"#2e2e2e",marginBottom:28}}>
             미감, 하면 어떤 생각이 드시나요. 디자인? 색? 심리? 여러 언어들이 떠오를 수 있겠지만, 결국 어떤 측면이든 나의 감성과 코드에 맞아야 비로소 와닿는다고 생각합니다.
           </p>
-          <p style={{fontFamily:"'Noto Serif KR',serif",fontSize:15,fontWeight:300,lineHeight:2.05,color:"#555",marginBottom:22}}>
+          <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:15,fontWeight:300,lineHeight:2.05,color:"#555",marginBottom:22}}>
             그런 의미에서 저는 스스로 미감이 많이 부족한 편이라고 여겨왔습니다. 디자인이나 미술을 전문적으로 배워본 적이 없었고, 관련 전공을 지망하지도 않았으니까요. 그래서 복학 전 유럽 여행을 떠났을 때도, 수많은 예술 작품들 앞에서 제대로 된 감동을 받지 못한 채 돌아왔습니다. 알음알음 아는 지식과 GPT의 도움으로 유명한 작품 몇 개만 건드리고 온 여행이었죠.
           </p>
-          <p style={{fontFamily:"'Noto Serif KR',serif",fontSize:15,fontWeight:300,lineHeight:2.05,color:"#555",marginBottom:28}}>
+          <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:15,fontWeight:300,lineHeight:2.05,color:"#555",marginBottom:28}}>
             그 아쉬움을 안고 맞이한 이번 학기, 전공 수업 목록에서 '감성미학'이라는 단어가 눈에 들어왔습니다. 이 과목을 들으면 미감이라는 게 조금은 생기지 않을까 싶어 신청하게 됐고, 그렇게 시작된 한 학기였습니다. 그리고 생각보다 훨씬 많은 멋진 이야기가 미학이라는 학문에 담겨 있었습니다.
           </p>
           <div style={{borderLeft:"2px solid rgba(200,182,255,.55)",paddingLeft:22}}>
-            <p style={{fontFamily:"'Noto Sans KR',sans-serif",fontSize:12,fontWeight:300,lineHeight:1.95,color:"#999"}}>
+            <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:12,fontWeight:300,lineHeight:1.95,color:"#999"}}>
               이 페이지는 그 한 학기를 필기의 흐름대로 가볍게 정리한 개인적인 기록입니다. 공식 자료가 아니며, 사실과 다르거나 누락된 내용이 있을 수 있습니다. 가볍게 둘러봐 주세요.
             </p>
           </div>
@@ -400,19 +398,19 @@ function EraCard({ era, onClick }) {
     <div className="era-card" data-h="1" onClick={()=>onClick(era)}>
       <div style={{height:4,background:era.grad}}/>
       <div style={{padding:"26px 22px 22px"}}>
-        <p style={{fontFamily:"'Cormorant Garamond',serif",fontSize:12,letterSpacing:".1em",color:"#c8c8c8",marginBottom:10}}>{era.num}</p>
-        <h3 style={{fontFamily:"'Noto Serif KR',serif",fontSize:19,fontWeight:400,color:"#1a1820",marginBottom:3,lineHeight:1.3}}>{era.title}</h3>
-        <p style={{fontFamily:"'Cormorant Garamond',serif",fontSize:12,fontStyle:"italic",color:"#b0b0b0",marginBottom:3}}>{era.en}</p>
-        <p style={{fontFamily:"'Noto Sans KR',sans-serif",fontSize:10,color:"#d0d0d0",letterSpacing:".05em",marginBottom:18}}>{era.period}</p>
+        <p style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:12,letterSpacing:".1em",color:"#c8c8c8",marginBottom:10}}>{era.num}</p>
+        <h3 style={{fontFamily:"'Pretendard',sans-serif",fontSize:19,fontWeight:400,color:"#1a1820",marginBottom:3,lineHeight:1.3}}>{era.title}</h3>
+        <p style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:12,fontStyle:"italic",color:"#b0b0b0",marginBottom:3}}>{era.en}</p>
+        <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:10,color:"#d0d0d0",letterSpacing:".05em",marginBottom:18}}>{era.period}</p>
         <div style={{display:"flex",flexWrap:"wrap",gap:5,marginBottom:18}}>
           {era.keys.slice(0,3).map(k=><span key={k} className="tag">{k}</span>)}
         </div>
         <div style={{borderTop:"1px solid rgba(0,0,0,.06)",paddingTop:14,display:"flex",alignItems:"center",justifyContent:"space-between"}}>
-          <p style={{fontFamily:"'Noto Sans KR',sans-serif",fontSize:11,fontWeight:300,lineHeight:1.85,color:"#999",flex:1}}>
+          <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:11,fontWeight:300,lineHeight:1.85,color:"#999",flex:1}}>
             {era.feel.slice(0,48)}…
           </p>
           <span style={{
-            fontFamily:"'Noto Sans KR',sans-serif",fontSize:10,fontWeight:300,
+            fontFamily:"'Pretendard',sans-serif",fontSize:10,fontWeight:300,
             color:"#b0aac8",background:"rgba(200,182,255,.1)",
             padding:"2px 8px",borderRadius:10,marginLeft:8,whiteSpace:"nowrap",flexShrink:0,
           }}>작품 {(era.imgs||[]).length}개</span>
@@ -427,13 +425,13 @@ function ErasSection({ onCardClick }) {
     <section id="eras" style={{background:"#f0eff5",padding:"100px 44px"}}>
       <div style={{maxWidth:1200,margin:"0 auto"}}>
         <div style={{marginBottom:56}}>
-          <p style={{fontFamily:"'Noto Sans KR',sans-serif",fontSize:10,letterSpacing:".22em",fontWeight:300,color:"#b0b0b0",marginBottom:14}}>TIMELINE · 시대별 필기</p>
-          <h2 style={{fontFamily:"'Cormorant Garamond',serif",fontSize:46,fontWeight:300,color:"#1a1820",lineHeight:1.2}}>원시에서<br/>현대까지</h2>
+          <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:10,letterSpacing:".22em",fontWeight:300,color:"#b0b0b0",marginBottom:14}}>TIMELINE · 시대별 필기</p>
+          <h2 style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:46,fontWeight:300,color:"#1a1820",lineHeight:1.2}}>원시에서<br/>현대까지</h2>
         </div>
         <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:16}}>
           {ERAS.map(e=><EraCard key={e.id} era={e} onClick={onCardClick}/>)}
         </div>
-        <p style={{marginTop:22,fontFamily:"'Noto Sans KR',sans-serif",fontSize:11,color:"#c0c0c0",fontWeight:300}}>
+        <p style={{marginTop:22,fontFamily:"'Pretendard',sans-serif",fontSize:11,color:"#c0c0c0",fontWeight:300}}>
           카드를 클릭하면 상세 내용이 열립니다 · 총 20개 시대 및 사조
         </p>
       </div>
@@ -445,13 +443,13 @@ function MovieCard({ movie, onClick }) {
   return (
     <div className="movie-card" data-h="1" onClick={()=>onClick(movie)} style={{background:movie.bg}}>
       <div style={{padding:"36px 28px 30px"}}>
-        <p style={{fontFamily:"'Cormorant Garamond',serif",fontSize:12,fontStyle:"italic",letterSpacing:".06em",color:"rgba(255,255,255,.35)",marginBottom:16}}>{movie.year}</p>
-        <h3 style={{fontFamily:"'Noto Serif KR',serif",fontSize:19,fontWeight:400,color:"white",lineHeight:1.45,marginBottom:6}}>{movie.title}</h3>
-        <p style={{fontFamily:"'Cormorant Garamond',serif",fontSize:12,fontStyle:"italic",color:"rgba(255,255,255,.35)",marginBottom:24}}>{movie.en}</p>
+        <p style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:12,fontStyle:"italic",letterSpacing:".06em",color:"rgba(255,255,255,.35)",marginBottom:16}}>{movie.year}</p>
+        <h3 style={{fontFamily:"'Pretendard',sans-serif",fontSize:19,fontWeight:400,color:"white",lineHeight:1.45,marginBottom:6}}>{movie.title}</h3>
+        <p style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:12,fontStyle:"italic",color:"rgba(255,255,255,.35)",marginBottom:24}}>{movie.en}</p>
         <div style={{display:"flex",flexWrap:"wrap",gap:6,marginBottom:24}}>
           {movie.conn.map(c=><span key={c} className="dark-tag">{c}</span>)}
         </div>
-        <p style={{fontFamily:"'Noto Sans KR',sans-serif",fontSize:11,fontWeight:300,lineHeight:1.9,color:"rgba(255,255,255,.45)"}}>
+        <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:11,fontWeight:300,lineHeight:1.9,color:"rgba(255,255,255,.45)"}}>
           {movie.feel.slice(0,55)}…
         </p>
         <div style={{marginTop:28,height:2,background:movie.accent,borderRadius:1,opacity:.55}}/>
@@ -465,8 +463,8 @@ function MoviesSection({ onCardClick }) {
     <section id="movies" style={{background:"#0d0c14",padding:"100px 44px"}}>
       <div style={{maxWidth:1200,margin:"0 auto"}}>
         <div style={{marginBottom:56}}>
-          <p style={{fontFamily:"'Noto Sans KR',sans-serif",fontSize:10,letterSpacing:".22em",fontWeight:300,color:"rgba(255,255,255,.28)",marginBottom:14}}>FILMS · 수업에서 본 영화</p>
-          <h2 style={{fontFamily:"'Cormorant Garamond',serif",fontSize:46,fontWeight:300,color:"white",lineHeight:1.2}}>예술가를<br/>스크린에서 만나다</h2>
+          <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:10,letterSpacing:".22em",fontWeight:300,color:"rgba(255,255,255,.28)",marginBottom:14}}>FILMS · 수업에서 본 영화</p>
+          <h2 style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:46,fontWeight:300,color:"white",lineHeight:1.2}}>예술가를<br/>스크린에서 만나다</h2>
         </div>
         <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:16}}>
           {MOVIES.map(m=><MovieCard key={m.id} movie={m} onClick={onCardClick}/>)}
@@ -492,7 +490,7 @@ function MemoBlock({ text }) {
           return (
             <div key={bi} style={{display:"flex",alignItems:"center",gap:9,marginTop:bi>0?8:0}}>
               <div style={{width:3,height:16,background:"linear-gradient(180deg,#c8b6ff,#9bf6ff)",borderRadius:2,flexShrink:0}}/>
-              <span style={{fontFamily:"'Noto Sans KR',sans-serif",fontSize:11.5,fontWeight:600,letterSpacing:".07em",color:"#7860b8"}}>
+              <span style={{fontFamily:"'Pretendard',sans-serif",fontSize:11.5,fontWeight:600,letterSpacing:".07em",color:"#7860b8"}}>
                 {lines[0].slice(4)}
               </span>
             </div>
@@ -503,9 +501,9 @@ function MemoBlock({ text }) {
         if (lines[0].startsWith('★ ')) {
           return (
             <div key={bi} style={{background:"rgba(200,182,255,.08)",borderRadius:4,padding:"11px 15px",borderLeft:"2.5px solid rgba(200,182,255,.55)"}}>
-              <span style={{fontFamily:"'Noto Sans KR',sans-serif",fontSize:10,fontWeight:600,color:"#9b80e0",letterSpacing:".06em",display:"block",marginBottom:6}}>★ 핵심 개념</span>
+              <span style={{fontFamily:"'Pretendard',sans-serif",fontSize:10,fontWeight:600,color:"#9b80e0",letterSpacing:".06em",display:"block",marginBottom:6}}>★ 핵심 개념</span>
               {lines.map((l, li) => (
-                <p key={li} style={{fontFamily:"'Noto Serif KR',serif",fontSize:13,fontWeight:300,lineHeight:1.9,color:"#333",margin:li>0?"5px 0 0":0}}>
+                <p key={li} style={{fontFamily:"'Pretendard',sans-serif",fontSize:13,fontWeight:300,lineHeight:1.9,color:"#333",margin:li>0?"5px 0 0":0}}>
                   {li === 0 ? l.slice(2) : l}
                 </p>
               ))}
@@ -519,8 +517,8 @@ function MemoBlock({ text }) {
             <div key={bi} style={{display:"flex",flexDirection:"column",gap:5}}>
               {lines.map((l, li) => (
                 <div key={li} style={{display:"flex",gap:10,alignItems:"flex-start"}}>
-                  <span style={{color:"#c8b6ff",fontFamily:"'Cormorant Garamond',serif",fontSize:17,lineHeight:1.35,flexShrink:0,marginTop:0}}>·</span>
-                  <p style={{fontFamily:"'Noto Serif KR',serif",fontSize:13,fontWeight:300,lineHeight:1.85,color:"#444",margin:0}}>{l.slice(2)}</p>
+                  <span style={{color:"#c8b6ff",fontFamily:"'HsBombaram30',sans-serif",fontSize:17,lineHeight:1.35,flexShrink:0,marginTop:0}}>·</span>
+                  <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:13,fontWeight:300,lineHeight:1.85,color:"#444",margin:0}}>{l.slice(2)}</p>
                 </div>
               ))}
             </div>
@@ -542,12 +540,12 @@ function MemoBlock({ text }) {
           if (cur) items.push(cur);
           return (
             <div key={bi}>
-              {intro && <p style={{fontFamily:"'Noto Serif KR',serif",fontSize:13,fontWeight:300,lineHeight:1.9,color:"#444",marginBottom:10}}>{intro}</p>}
+              {intro && <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:13,fontWeight:300,lineHeight:1.9,color:"#444",marginBottom:10}}>{intro}</p>}
               <div style={{display:"flex",flexDirection:"column",gap:7}}>
                 {items.map((it, ii) => (
                   <div key={ii} style={{display:"flex",gap:10,alignItems:"baseline"}}>
-                    <span style={{fontFamily:"'Noto Sans KR',sans-serif",fontSize:12,color:"#b0a0d0",flexShrink:0,fontWeight:500}}>{it.num}</span>
-                    <p style={{fontFamily:"'Noto Serif KR',serif",fontSize:13,fontWeight:300,lineHeight:1.85,color:"#555",margin:0}}>{it.text.trim()}</p>
+                    <span style={{fontFamily:"'Pretendard',sans-serif",fontSize:12,color:"#b0a0d0",flexShrink:0,fontWeight:500}}>{it.num}</span>
+                    <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:13,fontWeight:300,lineHeight:1.85,color:"#555",margin:0}}>{it.text.trim()}</p>
                   </div>
                 ))}
               </div>
@@ -562,17 +560,17 @@ function MemoBlock({ text }) {
           const body  = block.slice(di + 3);
           return (
             <div key={bi} style={{borderLeft:"2px solid rgba(200,182,255,.45)",paddingLeft:14}}>
-              <span style={{fontFamily:"'Noto Sans KR',sans-serif",fontSize:10,fontWeight:500,letterSpacing:".07em",color:"#a090c8",display:"block",marginBottom:5}}>
+              <span style={{fontFamily:"'Pretendard',sans-serif",fontSize:10,fontWeight:500,letterSpacing:".07em",color:"#a090c8",display:"block",marginBottom:5}}>
                 {label}
               </span>
-              <p style={{fontFamily:"'Noto Serif KR',serif",fontSize:13,fontWeight:300,lineHeight:1.95,color:"#444",margin:0}}>{body}</p>
+              <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:13,fontWeight:300,lineHeight:1.95,color:"#444",margin:0}}>{body}</p>
             </div>
           );
         }
 
         // 일반 단락
         return (
-          <p key={bi} style={{fontFamily:"'Noto Serif KR',serif",fontSize:13,fontWeight:300,lineHeight:2.0,color:"#444",margin:0}}>{block}</p>
+          <p key={bi} style={{fontFamily:"'Pretendard',sans-serif",fontSize:13,fontWeight:300,lineHeight:2.0,color:"#444",margin:0}}>{block}</p>
         );
       })}
     </div>
@@ -608,10 +606,10 @@ function Modal({ item, type, onClose }) {
           boxShadow:"0 30px 80px rgba(0,0,0,.6)",
         }}/>
         <div style={{position:"absolute",bottom:24,left:0,right:0,textAlign:"center"}}>
-          <p style={{fontFamily:"'Noto Serif KR',serif",fontSize:13,color:"rgba(255,255,255,.5)"}}>
+          <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:13,color:"rgba(255,255,255,.5)"}}>
             {lightbox.t}
           </p>
-          <p style={{fontFamily:"'Cormorant Garamond',serif",fontSize:12,fontStyle:"italic",color:"rgba(255,255,255,.3)",marginTop:4}}>
+          <p style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:12,fontStyle:"italic",color:"rgba(255,255,255,.3)",marginTop:4}}>
             {lightbox.a} · {lightbox.y}
           </p>
         </div>
@@ -633,13 +631,13 @@ function Modal({ item, type, onClose }) {
             style={{color: isEra ? "#aaa" : "rgba(255,255,255,.4)"}}>✕</button>
           {isEra ? (
             <>
-              <p style={{fontFamily:"'Cormorant Garamond',serif",fontSize:13,color:"#c8c8c8",marginBottom:8,letterSpacing:".08em"}}>{item.num} · {item.en} · {item.period}</p>
-              <h2 style={{fontFamily:"'Noto Serif KR',serif",fontSize:26,fontWeight:400,color:"#1a1820",marginBottom:22}}>{item.title}</h2>
+              <p style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:13,color:"#c8c8c8",marginBottom:8,letterSpacing:".08em"}}>{item.num} · {item.en} · {item.period}</p>
+              <h2 style={{fontFamily:"'Pretendard',sans-serif",fontSize:26,fontWeight:400,color:"#1a1820",marginBottom:22}}>{item.title}</h2>
               <div style={{display:"flex",flexWrap:"wrap",gap:6,marginBottom:26}}>
                 {item.keys.map(k=><span key={k} className="tag">{k}</span>)}
               </div>
               <div style={{marginBottom:24}}>
-                <p style={{fontFamily:"'Noto Sans KR',sans-serif",fontSize:10,letterSpacing:".18em",color:"#bbb",marginBottom:14}}>
+                <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:10,letterSpacing:".18em",color:"#bbb",marginBottom:14}}>
                   기억에 남는 작품 ({(item.imgs||[]).length}개)
                 </p>
                 <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(130px,1fr))",gap:10}}>
@@ -659,25 +657,25 @@ function Modal({ item, type, onClose }) {
                           height:86, background:item.grad, opacity:.55,
                           display:"flex",alignItems:"center",justifyContent:"center",
                         }}>
-                          <span style={{fontFamily:"'Cormorant Garamond',serif",fontSize:22,color:"rgba(255,255,255,.6)"}}>⊹</span>
+                          <span style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:22,color:"rgba(255,255,255,.6)"}}>⊹</span>
                         </div>
                       )}
                       <div style={{padding:"8px 10px 10px"}}>
-                        <p style={{fontFamily:"'Noto Serif KR',serif",fontSize:12,fontWeight:400,color:"#1a1820",lineHeight:1.4,marginBottom:2}}>{img.t}</p>
-                        <p style={{fontFamily:"'Cormorant Garamond',serif",fontSize:11,fontStyle:"italic",color:"#aaa"}}>{img.a}</p>
-                        <p style={{fontFamily:"'Noto Sans KR',sans-serif",fontSize:10,color:"#ccc",marginTop:1}}>{img.y}</p>
+                        <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:12,fontWeight:400,color:"#1a1820",lineHeight:1.4,marginBottom:2}}>{img.t}</p>
+                        <p style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:11,fontStyle:"italic",color:"#aaa"}}>{img.a}</p>
+                        <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:10,color:"#ccc",marginTop:1}}>{img.y}</p>
                       </div>
                     </div>
                   ))}
                 </div>
               </div>
               <div style={{borderTop:"1px solid rgba(0,0,0,.07)",paddingTop:22,marginBottom:20}}>
-                <p style={{fontFamily:"'Noto Sans KR',sans-serif",fontSize:10,letterSpacing:".18em",color:"#bbb",marginBottom:16}}>내 필기의 포인트</p>
+                <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:10,letterSpacing:".18em",color:"#bbb",marginBottom:16}}>내 필기의 포인트</p>
                 <MemoBlock text={item.memo} />
               </div>
               <div style={{background:"rgba(200,182,255,.07)",padding:"18px 22px",borderRadius:2,borderLeft:"2px solid rgba(200,182,255,.4)"}}>
-                <p style={{fontFamily:"'Noto Sans KR',sans-serif",fontSize:10,letterSpacing:".18em",color:"#bbb",marginBottom:10}}>느낀 점</p>
-                <p style={{fontFamily:"'Noto Serif KR',serif",fontSize:14,fontWeight:300,lineHeight:2.05,color:"#666",fontStyle:"italic"}}>"{item.feel}"</p>
+                <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:10,letterSpacing:".18em",color:"#bbb",marginBottom:10}}>느낀 점</p>
+                <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:14,fontWeight:300,lineHeight:2.05,color:"#666",fontStyle:"italic"}}>"{item.feel}"</p>
               </div>
             </>
           ) : (
@@ -691,25 +689,25 @@ function Modal({ item, type, onClose }) {
                   }}/>
                 )}
                 <div style={{flex:1,minWidth:0}}>
-                  <p style={{fontFamily:"'Cormorant Garamond',serif",fontSize:13,fontStyle:"italic",color:"rgba(255,255,255,.3)",marginBottom:8}}>{item.year} · {item.en}</p>
-                  <h2 style={{fontFamily:"'Noto Serif KR',serif",fontSize:22,fontWeight:400,color:"white",marginBottom:16,lineHeight:1.4}}>{item.title}</h2>
+                  <p style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:13,fontStyle:"italic",color:"rgba(255,255,255,.3)",marginBottom:8}}>{item.year} · {item.en}</p>
+                  <h2 style={{fontFamily:"'Pretendard',sans-serif",fontSize:22,fontWeight:400,color:"white",marginBottom:16,lineHeight:1.4}}>{item.title}</h2>
                   <div style={{display:"flex",flexWrap:"wrap",gap:6,marginBottom:16}}>
                     {item.conn.map(c=><span key={c} className="dark-tag">{c}</span>)}
                   </div>
                   {item.plot && (
                     <div>
-                      <p style={{fontFamily:"'Noto Sans KR',sans-serif",fontSize:10,letterSpacing:".18em",color:"rgba(255,255,255,.3)",marginBottom:8}}>줄거리</p>
-                      <p style={{fontFamily:"'Noto Serif KR',serif",fontSize:13,fontWeight:300,lineHeight:1.95,color:"rgba(255,255,255,.5)"}}>{item.plot}</p>
+                      <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:10,letterSpacing:".18em",color:"rgba(255,255,255,.3)",marginBottom:8}}>줄거리</p>
+                      <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:13,fontWeight:300,lineHeight:1.95,color:"rgba(255,255,255,.5)"}}>{item.plot}</p>
                     </div>
                   )}
                 </div>
               </div>
               <div style={{marginBottom:20}}>
-                <p style={{fontFamily:"'Noto Sans KR',sans-serif",fontSize:10,letterSpacing:".18em",color:"rgba(255,255,255,.3)",marginBottom:12}}>느낀 점</p>
-                <p style={{fontFamily:"'Noto Serif KR',serif",fontSize:15,fontWeight:300,lineHeight:2.05,color:"rgba(255,255,255,.65)"}}>{item.desc}</p>
+                <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:10,letterSpacing:".18em",color:"rgba(255,255,255,.3)",marginBottom:12}}>느낀 점</p>
+                <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:15,fontWeight:300,lineHeight:2.05,color:"rgba(255,255,255,.65)"}}>{item.desc}</p>
               </div>
               <div style={{background:"rgba(255,255,255,.04)",padding:"18px 22px",borderRadius:2,borderLeft:"2px solid rgba(200,182,255,.3)"}}>
-                <p style={{fontFamily:"'Noto Serif KR',serif",fontSize:14,fontWeight:300,lineHeight:2.05,color:"rgba(255,255,255,.5)",fontStyle:"italic"}}>"{item.feel}"</p>
+                <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:14,fontWeight:300,lineHeight:2.05,color:"rgba(255,255,255,.5)",fontStyle:"italic"}}>"{item.feel}"</p>
               </div>
             </>
           )}
@@ -752,19 +750,19 @@ export default function App() {
         <section id="exhibition" style={{background:"#f7f6f2",padding:"100px 44px"}}>
           <div style={{maxWidth:960,margin:"0 auto",display:"grid",gridTemplateColumns:"220px 1fr",gap:80,alignItems:"center"}}>
             <div>
-              <p style={{fontFamily:"'Noto Sans KR',sans-serif",fontSize:10,letterSpacing:".22em",fontWeight:300,color:"#b0b0b0",marginBottom:16}}>EXHIBITION · 전시</p>
-              <h2 style={{fontFamily:"'Cormorant Garamond',serif",fontSize:36,fontWeight:300,color:"#1a1820",lineHeight:1.3}}>디뮤지엄<br/>〈취향가옥2〉</h2>
+              <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:10,letterSpacing:".22em",fontWeight:300,color:"#b0b0b0",marginBottom:16}}>EXHIBITION · 전시</p>
+              <h2 style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:36,fontWeight:300,color:"#1a1820",lineHeight:1.3}}>디뮤지엄<br/>〈취향가옥2〉</h2>
               <img src="/images/취향가옥2포스터.jpg" alt="취향가옥2 포스터" style={{width:"100%",marginTop:24,borderRadius:2,boxShadow:"0 8px 28px rgba(0,0,0,.13)",display:"block"}}/>
             </div>
             <div>
-              <p style={{fontFamily:"'Noto Serif KR',serif",fontSize:16,fontWeight:300,lineHeight:2.1,color:"#2e2e2e",marginBottom:22}}>
+              <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:16,fontWeight:300,lineHeight:2.1,color:"#2e2e2e",marginBottom:22}}>
                 수업의 일환으로 다 함께 방문한 전시였다. 예상보다 훨씬 신선한 경험이었는데, 미술 작품이 가구처럼 공간 안에서 기능할 수 있다는 것을 처음으로 체감한 전시였기 때문이다.
               </p>
-              <p style={{fontFamily:"'Noto Serif KR',serif",fontSize:15,fontWeight:300,lineHeight:2.05,color:"#555",marginBottom:22}}>
+              <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:15,fontWeight:300,lineHeight:2.05,color:"#555",marginBottom:22}}>
                 정교하게 설계된 조명 작품은 처음엔 그냥 조명인 줄 알았다가, 큐레이터 선생님의 설명과 함께 작품으로 보이게 됐다. 에폭시 재료로 만들어진 의자도, 집에 놓고 싶다는 생각이 들 만큼 감각적이었다. 백남준 선생님의 작품도 볼 수 있었는데, 당시에는 수업을 듣기 전이라 그 의미를 제대로 알지 못한 채 그냥 신기한 설치 작품으로만 느끼고 지나쳐버렸다. 나중에 수업에서 배우고 나서야, 그 작품 앞에서 좀 더 오래 서 있었어야 했다는 아쉬움이 남았다.
               </p>
               <div style={{borderLeft:"2px solid rgba(200,182,255,.55)",paddingLeft:22}}>
-                <p style={{fontFamily:"'Noto Serif KR',serif",fontSize:14,fontWeight:300,lineHeight:2.0,color:"#888",fontStyle:"italic"}}>
+                <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:14,fontWeight:300,lineHeight:2.0,color:"#888",fontStyle:"italic"}}>
                   확실히 미술관은 큐레이터와 함께 봐야 한다는 걸 처음으로 실감한 날이었다. 설명이 들어오는 순간 보이는 것들이 달라졌다.
                 </p>
               </div>
@@ -772,7 +770,7 @@ export default function App() {
                 <Link to="/exhibition-gallery" data-h="1" style={{
                   display:"inline-flex",alignItems:"center",gap:10,
                   padding:"12px 24px",border:"1px solid rgba(0,0,0,.14)",borderRadius:2,
-                  fontFamily:"'Noto Sans KR',sans-serif",fontSize:11,fontWeight:300,
+                  fontFamily:"'Pretendard',sans-serif",fontSize:11,fontWeight:300,
                   letterSpacing:".1em",color:"#555",textDecoration:"none",
                   background:"transparent",transition:"all .2s",
                 }}
@@ -788,8 +786,8 @@ export default function App() {
         <section id="ppt" style={{background:"#f0eff5",padding:"100px 44px"}}>
           <div style={{maxWidth:960,margin:"0 auto"}}>
             <div style={{marginBottom:56}}>
-              <p style={{fontFamily:"'Noto Sans KR',sans-serif",fontSize:10,letterSpacing:".22em",fontWeight:300,color:"#b0b0b0",marginBottom:14}}>PRESENTATIONS · 팀 발표</p>
-              <h2 style={{fontFamily:"'Cormorant Garamond',serif",fontSize:46,fontWeight:300,color:"#1a1820",lineHeight:1.2}}>네 번의<br/>발표</h2>
+              <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:10,letterSpacing:".22em",fontWeight:300,color:"#b0b0b0",marginBottom:14}}>PRESENTATIONS · 팀 발표</p>
+              <h2 style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:46,fontWeight:300,color:"#1a1820",lineHeight:1.2}}>네 번의<br/>발표</h2>
             </div>
             <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:32}}>
               {[
@@ -802,9 +800,9 @@ export default function App() {
                   {p.cover && (
                     <img src={p.cover} alt={p.title} style={{width:"100%",height:170,objectFit:"cover",objectPosition:"center top",borderRadius:2,marginBottom:18,display:"block",boxShadow:"0 4px 16px rgba(0,0,0,.1)"}}/>
                   )}
-                  <p style={{fontFamily:"'Cormorant Garamond',serif",fontSize:12,color:"#c8c8c8",marginBottom:8,letterSpacing:".08em"}}>{p.num}</p>
-                  <h3 style={{fontFamily:"'Noto Serif KR',serif",fontSize:16,fontWeight:400,color:"#1a1820",marginBottom:14,lineHeight:1.5}}>{p.title}</h3>
-                  <p style={{fontFamily:"'Noto Serif KR',serif",fontSize:13,fontWeight:300,lineHeight:2.0,color:"#666"}}>{p.body}</p>
+                  <p style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:12,color:"#c8c8c8",marginBottom:8,letterSpacing:".08em"}}>{p.num}</p>
+                  <h3 style={{fontFamily:"'Pretendard',sans-serif",fontSize:16,fontWeight:400,color:"#1a1820",marginBottom:14,lineHeight:1.5}}>{p.title}</h3>
+                  <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:13,fontWeight:300,lineHeight:2.0,color:"#666"}}>{p.body}</p>
                 </div>
               ))}
             </div>
@@ -812,7 +810,7 @@ export default function App() {
               <Link to="/presentation-detail" data-h="1" style={{
                 display:"inline-flex",alignItems:"center",gap:10,
                 padding:"12px 24px",border:"1px solid rgba(0,0,0,.14)",borderRadius:2,
-                fontFamily:"'Noto Sans KR',sans-serif",fontSize:11,fontWeight:300,
+                fontFamily:"'Pretendard',sans-serif",fontSize:11,fontWeight:300,
                 letterSpacing:".1em",color:"#555",textDecoration:"none",
                 background:"transparent",transition:"all .2s",
               }}
@@ -826,23 +824,23 @@ export default function App() {
         </section>
         <section id="outro" style={{background:"#08080f",padding:"120px 44px"}}>
           <div style={{maxWidth:780,margin:"0 auto"}}>
-            <p style={{fontFamily:"'Noto Sans KR',sans-serif",fontSize:10,letterSpacing:".22em",color:"rgba(255,255,255,.3)",marginBottom:28}}>OUTRO · 마치며</p>
-            <h2 className="holo-text" style={{fontFamily:"'Cormorant Garamond',serif",fontSize:"clamp(32px,5vw,64px)",fontWeight:300,lineHeight:1.35,marginBottom:52,textAlign:"center"}}>
+            <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:10,letterSpacing:".22em",color:"rgba(255,255,255,.3)",marginBottom:28}}>OUTRO · 마치며</p>
+            <h2 className="holo-text" style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:"clamp(32px,5vw,64px)",fontWeight:300,lineHeight:1.35,marginBottom:52,textAlign:"center"}}>
               한 학기를 지나며<br/>미술 앞에서 멈추는 방식이<br/>조금 달라졌습니다
             </h2>
             <div style={{display:"flex",flexDirection:"column",gap:20}}>
-              <p style={{fontFamily:"'Noto Serif KR',serif",fontSize:15,fontWeight:300,lineHeight:2.1,color:"rgba(255,255,255,.55)"}}>
+              <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:15,fontWeight:300,lineHeight:2.1,color:"rgba(255,255,255,.55)"}}>
                 사실 이 과목을 처음 선택할 때까지만 해도 이렇게까지 많은 내용을 배우게 될 거라곤 상상하지 못했습니다. 학점을 거의 다 채운 4학년 1학기, 전공 학점이 조금 남아 반쯤 가볍게 시작하게 된 감성미학이었는데, 지금은 이 과목을 선택한 게 그 어떤 선택보다 잘한 일 중 하나라고 생각합니다.
               </p>
-              <p style={{fontFamily:"'Noto Serif KR',serif",fontSize:15,fontWeight:300,lineHeight:2.1,color:"rgba(255,255,255,.55)"}}>
+              <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:15,fontWeight:300,lineHeight:2.1,color:"rgba(255,255,255,.55)"}}>
                 '예쁘다'는 느낌 앞에서 이제는 자연스럽게 '왜 이렇게 그렸을까'라는 질문이 따라옵니다. 유럽에서 스쳐왔던 작품들이 지금 다시 떠오르면서, 알고 보면 더 깊이 느껴진다는 걸 뒤늦게 실감하고 있습니다. 이미 지나가버린 여행이 더 아쉽게 느껴지는 건, 그만큼 이 수업이 남긴 게 많다는 뜻인 것 같습니다.
               </p>
-              <p style={{fontFamily:"'Noto Serif KR',serif",fontSize:15,fontWeight:300,lineHeight:2.1,color:"rgba(255,255,255,.55)"}}>
+              <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:15,fontWeight:300,lineHeight:2.1,color:"rgba(255,255,255,.55)"}}>
                 함께 이번 학기를 보낸 학우 여러분, 정말 고생하셨습니다. 앞으로 감성미학을 수강하실 분들은 기대하셔도 좋을 것 같습니다. 한 학기 동안 잘 이끌어주신 원혜영 교수님께도 진심으로 감사드립니다.
               </p>
             </div>
             <div style={{marginTop:56,paddingTop:32,borderTop:"1px solid rgba(255,255,255,.07)",textAlign:"center"}}>
-              <p style={{fontFamily:"'Noto Sans KR',sans-serif",fontSize:11,fontWeight:300,color:"rgba(255,255,255,.2)",lineHeight:1.9}}>
+              <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:11,fontWeight:300,color:"rgba(255,255,255,.2)",lineHeight:1.9}}>
                 이 페이지는 공식 자료가 아닙니다.<br/>개인적인 사견과 기억에 의존한 내용이 포함되어 있으며, 감성미학 수업 전체나 미술사 전체를 대변하지 않습니다.
               </p>
             </div>
