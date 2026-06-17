@@ -22,6 +22,8 @@ html{scroll-behavior:smooth;}
 .era-card:hover{transform:translateY(-8px) rotate(-.25deg);box-shadow:0 24px 48px rgba(0,0,0,.1);}
 .movie-card{border-radius:3px;overflow:hidden;transition:transform .35s ease,box-shadow .35s ease;}
 .movie-card:hover{transform:translateY(-7px);box-shadow:0 22px 44px rgba(0,0,0,.25);}
+.ppt-card{border-radius:3px;transition:transform .35s ease,box-shadow .35s ease;}
+.ppt-card:hover{transform:translateY(-8px) rotate(.25deg);box-shadow:0 24px 48px rgba(0,0,0,.12);}
 .nav-a{font-family:'Pretendard',sans-serif;font-size:11px;font-weight:300;letter-spacing:.12em;text-decoration:none;color:rgba(255,255,255,.55);transition:color .2s;}
 .nav-a:hover{color:#fff;}
 .tag{display:inline-block;padding:3px 10px;border:1px solid rgba(0,0,0,.12);border-radius:20px;font-family:'Pretendard',sans-serif;font-size:10px;font-weight:300;letter-spacing:.04em;color:#666;}
@@ -795,7 +797,7 @@ export default function App() {
                 { num:"03", slug:"modern-artists", title:"근현대 화가", cover:"/images/근현대미술작가표지.png", body:"이중섭, 김환기, 천경자, 김창열. 이 네 명의 화가가 모두 한국이 가장 힘들었던 시기를 함께했고, 그 아픔을 작품으로 승화시켰다는 공통점이 있었다. 근현대 한국의 다사다난함을 이들의 그림으로나마 간접 체험할 수 있다는 것, 그 자체가 이 발표의 의미였다. 다만 솔직히 준비가 부족했던 발표였어서, 지금 돌아보면 아쉬움이 많이 남는다." },
                 { num:"04", slug:"minhwa-ukiyoe", title:"우키요에와 민화", cover:"/images/우키요에민화표지.png", body:"솔직히 가장 힘들었던 발표였다. 민화는 작자 미상에 바리에이션도 다양하고 현대까지 이어지는 살아있는 사조라 자료 찾기가 쉽지 않았다. 그럼에도 도상 안에 담긴 의미를 공부하면서, 선조들이 그림에 어떤 소망을 담았는지를 생각해볼 수 있었다." },
               ].map(p=>(
-                <Link key={p.num} to={`/presentation/${p.slug}`} data-h="1" style={{borderTop:"1px solid rgba(0,0,0,.08)",paddingTop:24,textDecoration:"none",display:"block",cursor:"none"}}>
+                <Link key={p.num} to={`/presentation/${p.slug}`} data-h="1" className="ppt-card" style={{background:"#fff",border:"1px solid rgba(0,0,0,.07)",padding:20,textDecoration:"none",display:"block"}}>
                   {p.cover && (
                     <img src={p.cover} alt={p.title} style={{width:"100%",height:170,objectFit:"cover",objectPosition:"center top",borderRadius:2,marginBottom:18,display:"block",boxShadow:"0 4px 16px rgba(0,0,0,.1)"}}/>
                   )}
