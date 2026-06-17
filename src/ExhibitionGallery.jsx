@@ -1,8 +1,57 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
+const SECTIONS = [
+  { slug:"best", title:"가장 마음에 들었던 순간들", en:"Best Shots", count:13, feature:true },
+  { slug:"phrase", title:"취향가옥, 문구", en:"Words from the House", count:6 },
+  { slug:"collection1", title:"컬렉션 Ⅰ", en:"Collection I", count:18 },
+  { slug:"house", title:"취향가옥", en:"The House of Taste", count:17 },
+  { slug:"treasure", title:"보물창고가 된 집", en:"A House Turned Treasury", count:19 },
+  { slug:"beauty", title:"서로 다른 아름다움", en:"Different Kinds of Beauty", count:29 },
+  { slug:"collection2", title:"컬렉션 Ⅱ", en:"Collection II", count:10 },
+  { slug:"paik", title:"백남준", en:"Nam June Paik", count:5 },
+  { slug:"caption", title:"작품 제목 및 설명", en:"Captions & Labels", count:11 },
+  { slug:"me", title:"촬영하는 나", en:"Behind the Lens", count:2 },
+  { slug:"blossom", title:"나오는 길에 찍은 벚꽃", en:"Cherry Blossoms on the Way Out", count:4 },
+];
+
+const TOTAL = SECTIONS.reduce((s,c)=>s+c.count,0);
+
+function imgs(slug, count) {
+  return Array.from({ length: count }, (_, i) => `/images/exhibition/${slug}/${i+1}.jpg`);
+}
+
+const STYLE = `
+.collage-grid{column-count:2;column-gap:13px;}
+@media(min-width:640px){.collage-grid{column-count:3;}}
+@media(min-width:1024px){.collage-grid{column-count:4;}}
+.collage-grid--feature{column-count:1;}
+@media(min-width:640px){.collage-grid--feature{column-count:2;}}
+.collage-grid img{
+  width:100%;display:block;margin-bottom:13px;border-radius:3px;cursor:pointer;
+  box-shadow:0 6px 18px rgba(0,0,0,.4);
+  transition:transform .35s ease, box-shadow .35s ease;
+}
+.collage-grid img:hover{transform:scale(1.015) translateY(-3px);box-shadow:0 16px 34px rgba(0,0,0,.55);}
+`;
+
 export default function ExhibitionGallery() {
+  const [lightbox, setLightbox] = useState(null);
+
+  useEffect(() => {
+    const styleEl = document.createElement("style");
+    styleEl.textContent = STYLE;
+    document.head.appendChild(styleEl);
+    const onKey = (e) => { if (e.key === "Escape") setLightbox(null); };
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.head.removeChild(styleEl);
+      window.removeEventListener("keydown", onKey);
+    };
+  }, []);
+
   return (
-    <div style={{minHeight:"100vh",background:"#08080f",display:"flex",flexDirection:"column"}}>
+    <div style={{minHeight:"100vh",background:"#08080f"}}>
       <nav style={{
         position:"fixed",top:0,left:0,right:0,zIndex:100,
         display:"flex",alignItems:"center",justifyContent:"space-between",
@@ -22,7 +71,7 @@ export default function ExhibitionGallery() {
         </p>
       </nav>
 
-      <div style={{flex:1,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",padding:"100px 44px"}}>
+      <div style={{padding:"140px 44px 70px",textAlign:"center"}}>
         <p style={{
           fontFamily:"'Pretendard',sans-serif",fontSize:10,letterSpacing:".28em",fontWeight:300,
           color:"rgba(255,255,255,.22)",marginBottom:24,
@@ -31,35 +80,85 @@ export default function ExhibitionGallery() {
         </p>
         <h1 style={{
           fontFamily:"'HsBombaram30',sans-serif",
-          fontSize:"clamp(36px,5vw,64px)",fontWeight:300,color:"rgba(255,255,255,.85)",
-          textAlign:"center",lineHeight:1.3,marginBottom:20,
+          fontSize:"clamp(36px,5vw,64px)",fontWeight:300,color:"rgba(255,255,255,.88)",
+          lineHeight:1.3,marginBottom:22,
         }}>
-          디뮤지엄<br/>〈취향가옥 2〉
+          디뮤지엄〈취향가옥 2〉
         </h1>
         <p style={{
           fontFamily:"'Pretendard',sans-serif",fontSize:14,fontWeight:300,lineHeight:2.0,
-          color:"rgba(255,255,255,.3)",textAlign:"center",maxWidth:400,marginBottom:60,
+          color:"rgba(255,255,255,.32)",maxWidth:480,margin:"0 auto",
         }}>
-          전시에서 찍어온 사진들을 이곳에 정리할 예정입니다.
+          "아름다움은 사물들 자체 안에 존재하는 성질이 아니다. 그것은 오직 사물들을 관찰하는 정신 안에만 존재하며,
+          각각의 정신은 서로 다른 아름다움을 지각한다." 그날 눈에 담아온 {TOTAL}장의 장면들.
         </p>
-
-        <div style={{
-          border:"1px dashed rgba(255,255,255,.1)",borderRadius:3,
-          padding:"60px 80px",textAlign:"center",maxWidth:600,width:"100%",
-        }}>
-          <div style={{
-            width:48,height:48,borderRadius:"50%",
-            border:"1px dashed rgba(200,182,255,.3)",
-            display:"flex",alignItems:"center",justifyContent:"center",
-            margin:"0 auto 20px",
-          }}>
-            <span style={{fontSize:20,color:"rgba(200,182,255,.3)"}}>+</span>
-          </div>
-          <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:11,fontWeight:300,color:"rgba(255,255,255,.18)",letterSpacing:".06em"}}>
-            사진을 추가할 예정
-          </p>
-        </div>
       </div>
+
+      {SECTIONS.map((sec, idx) => (
+        <section key={sec.slug} style={{padding:"0 44px 80px"}}>
+          <div style={{maxWidth:1180,margin:"0 auto"}}>
+            <div style={{display:"flex",alignItems:"baseline",gap:14,marginBottom:26}}>
+              <span style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:13,color:"rgba(200,182,255,.5)",letterSpacing:".1em"}}>
+                {String(idx+1).padStart(2,"0")}
+              </span>
+              <h2 style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:26,fontWeight:300,color:"rgba(255,255,255,.85)"}}>
+                {sec.title}
+              </h2>
+              <span style={{fontFamily:"'Pretendard',sans-serif",fontSize:11,fontStyle:"italic",color:"rgba(255,255,255,.22)"}}>
+                {sec.en}
+              </span>
+            </div>
+            <div className={`collage-grid${sec.feature ? " collage-grid--feature" : ""}`}>
+              {imgs(sec.slug, sec.count).map((src, i) => (
+                <img
+                  key={src}
+                  src={src}
+                  alt={`${sec.title} ${i+1}`}
+                  loading="lazy"
+                  onClick={() => setLightbox(src)}
+                />
+              ))}
+            </div>
+          </div>
+        </section>
+      ))}
+
+      <div style={{padding:"20px 44px 100px",textAlign:"center"}}>
+        <Link to="/" data-h="1" style={{
+          display:"inline-flex",alignItems:"center",gap:10,
+          padding:"12px 24px",border:"1px solid rgba(255,255,255,.16)",borderRadius:2,
+          fontFamily:"'Pretendard',sans-serif",fontSize:11,fontWeight:300,
+          letterSpacing:".1em",color:"rgba(255,255,255,.5)",textDecoration:"none",
+        }}>
+          ← 메인으로 돌아가기
+        </Link>
+      </div>
+
+      {lightbox && (
+        <div
+          onClick={() => setLightbox(null)}
+          style={{
+            position:"fixed",inset:0,zIndex:200,background:"rgba(4,4,8,.92)",
+            display:"flex",alignItems:"center",justifyContent:"center",
+            padding:40,backdropFilter:"blur(6px)",
+          }}
+        >
+          <img
+            src={lightbox}
+            alt=""
+            style={{maxWidth:"100%",maxHeight:"100%",borderRadius:4,boxShadow:"0 24px 64px rgba(0,0,0,.6)"}}
+          />
+          <button
+            onClick={() => setLightbox(null)}
+            style={{
+              position:"fixed",top:24,right:32,background:"none",border:"none",
+              color:"rgba(255,255,255,.6)",fontSize:28,cursor:"pointer",lineHeight:1,
+            }}
+          >
+            ×
+          </button>
+        </div>
+      )}
     </div>
   );
 }
