@@ -424,9 +424,22 @@ function EraCard({ era, onClick }) {
 }
 
 function ErasSection({ onCardClick }) {
+  const orbs = [
+    {w:480,h:480,c:"rgba(200,182,255,.18)",t:"-6%",l:"-6%",anim:"float1 17s ease-in-out infinite",blur:30},
+    {w:380,h:380,c:"rgba(255,179,198,.16)",b:"-8%",r:"-4%",anim:"float2 20s ease-in-out infinite",blur:26},
+    {w:260,h:260,c:"rgba(155,246,255,.14)",t:"42%",r:"30%",anim:"float3 13s ease-in-out infinite",blur:20},
+  ];
   return (
-    <section id="eras" style={{background:"#f0eff5",padding:"100px 44px"}}>
-      <div style={{maxWidth:1200,margin:"0 auto"}}>
+    <section id="eras" style={{background:"#f0eff5",padding:"100px 44px",position:"relative",overflow:"hidden"}}>
+      {orbs.map((o,i)=>(
+        <div key={i} style={{
+          position:"absolute", width:o.w, height:o.h, borderRadius:"50%",
+          background:`radial-gradient(circle,${o.c} 0%,transparent 70%)`,
+          top:o.t, bottom:o.b, left:o.l, right:o.r,
+          animation:o.anim, filter:`blur(${o.blur}px)`, pointerEvents:"none",
+        }}/>
+      ))}
+      <div style={{maxWidth:1200,margin:"0 auto",position:"relative",zIndex:1}}>
         <div style={{marginBottom:56}}>
           <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:10,letterSpacing:".22em",fontWeight:300,color:"#b0b0b0",marginBottom:14}}>TIMELINE · 시대별 필기</p>
           <h2 className="reveal" style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:46,fontWeight:300,color:"#1a1820",lineHeight:1.2}}>원시에서<br/>현대까지</h2>
@@ -462,9 +475,22 @@ function MovieCard({ movie, onClick }) {
 }
 
 function MoviesSection({ onCardClick }) {
+  const orbs = [
+    {w:460,h:460,c:"rgba(155,246,255,.16)",t:"-8%",r:"-6%",anim:"float2 18s ease-in-out infinite",blur:30},
+    {w:340,h:340,c:"rgba(200,182,255,.18)",b:"-6%",l:"-4%",anim:"float1 15s ease-in-out infinite reverse",blur:24},
+    {w:220,h:220,c:"rgba(255,179,198,.14)",t:"45%",l:"32%",anim:"float3 12s ease-in-out infinite",blur:18},
+  ];
   return (
-    <section id="movies" style={{background:"#0d0c14",padding:"100px 44px"}}>
-      <div style={{maxWidth:1200,margin:"0 auto"}}>
+    <section id="movies" style={{background:"#0d0c14",padding:"100px 44px",position:"relative",overflow:"hidden"}}>
+      {orbs.map((o,i)=>(
+        <div key={i} style={{
+          position:"absolute", width:o.w, height:o.h, borderRadius:"50%",
+          background:`radial-gradient(circle,${o.c} 0%,transparent 70%)`,
+          top:o.t, bottom:o.b, left:o.l, right:o.r,
+          animation:o.anim, filter:`blur(${o.blur}px)`, pointerEvents:"none",
+        }}/>
+      ))}
+      <div style={{maxWidth:1200,margin:"0 auto",position:"relative",zIndex:1}}>
         <div style={{marginBottom:56}}>
           <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:10,letterSpacing:".22em",fontWeight:300,color:"rgba(255,255,255,.28)",marginBottom:14}}>FILMS · 수업에서 본 영화</p>
           <h2 className="reveal" style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:46,fontWeight:300,color:"white",lineHeight:1.2}}>예술가를<br/>스크린에서 만나다</h2>
