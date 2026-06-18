@@ -424,9 +424,9 @@ function Intro() {
 
 function EraCard({ era, onClick }) {
   return (
-    <div className="era-card reveal" data-h="1" onClick={()=>onClick(era)}>
+    <div className="era-card reveal" data-h="1" onClick={()=>onClick(era)} style={{position:"relative"}}>
       <div style={{height:4,background:era.grad}}/>
-      <div style={{padding:"26px 22px 22px"}}>
+      <div style={{padding:"26px 22px 46px"}}>
         <p style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:12,letterSpacing:".1em",color:"#c8c8c8",marginBottom:10}}>{era.num}</p>
         <h3 style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:21,fontWeight:400,color:"#5c5666",marginBottom:3,lineHeight:1.4,wordBreak:"keep-all"}}>{era.title}</h3>
         <p style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:12,fontStyle:"italic",color:"#b0b0b0",marginBottom:3}}>{era.en}</p>
@@ -434,17 +434,18 @@ function EraCard({ era, onClick }) {
         <div style={{display:"flex",flexWrap:"wrap",gap:5,marginBottom:18}}>
           {era.keys.slice(0,3).map(k=><span key={k} className="tag">{k}</span>)}
         </div>
-        <div style={{borderTop:"1px solid rgba(0,0,0,.06)",paddingTop:14,display:"flex",alignItems:"center",justifyContent:"space-between"}}>
-          <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:11,fontWeight:300,lineHeight:1.85,color:"#999",flex:1}}>
+        <div style={{borderTop:"1px solid rgba(0,0,0,.06)",paddingTop:14}}>
+          <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:11,fontWeight:300,lineHeight:1.85,color:"#999"}}>
             {era.feel.slice(0,48)}…
           </p>
-          <span style={{
-            fontFamily:"'Pretendard',sans-serif",fontSize:10,fontWeight:300,
-            color:"#b0aac8",background:"rgba(200,182,255,.1)",
-            padding:"2px 8px",borderRadius:10,marginLeft:8,whiteSpace:"nowrap",flexShrink:0,
-          }}>작품 {(era.imgs||[]).length}개</span>
         </div>
       </div>
+      <span style={{
+        position:"absolute",bottom:16,right:18,
+        fontFamily:"'Pretendard',sans-serif",fontSize:10,fontWeight:300,
+        color:"#b0aac8",background:"rgba(200,182,255,.1)",
+        padding:"2px 8px",borderRadius:10,whiteSpace:"nowrap",
+      }}>작품 {(era.imgs||[]).length}개</span>
     </div>
   );
 }
