@@ -356,7 +356,7 @@ function Hero() {
     {w:180,h:180,c:"rgba(253,255,182,.2)",t:"22%",l:"35%",anim:"float2 8s ease-in-out infinite reverse",blur:12},
   ];
   return (
-    <section id="hero" style={{height:"100vh",position:"relative",overflow:"hidden",background:"#08080f",display:"flex",alignItems:"center",justifyContent:"center"}}>
+    <section id="hero" style={{minHeight:"100vh",position:"relative",overflow:"hidden",background:"#08080f",display:"flex",alignItems:"center",justifyContent:"center",padding:"100px 24px"}}>
       {orbs.map((o,i)=>(
         <div key={i} style={{
           position:"absolute", width:o.w, height:o.h, borderRadius:"50%",
@@ -369,10 +369,10 @@ function Hero() {
         <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:10,fontWeight:300,letterSpacing:".3em",color:"rgba(255,255,255,.35)",marginBottom:36,animation:"fadeSlideUp .8s ease .2s both"}}>
           2026 · 감성미학 개인과제
         </p>
-        <h1 style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:"clamp(52px,8.5vw,100px)",fontWeight:300,lineHeight:1.12,color:"white",animation:"fadeSlideUp .8s ease .4s both"}}>
+        <h1 style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:"clamp(40px,8.5vw,100px)",fontWeight:300,lineHeight:1.3,color:"white",wordBreak:"keep-all",animation:"fadeSlideUp .8s ease .4s both"}}>
           미학이라는 이름의
         </h1>
-        <h1 className="holo-text" style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:"clamp(52px,8.5vw,100px)",fontWeight:300,lineHeight:1.12,marginBottom:44,animation:"fadeSlideUp .8s ease .5s both"}}>
+        <h1 className="holo-text" style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:"clamp(40px,8.5vw,100px)",fontWeight:300,lineHeight:1.3,marginBottom:44,wordBreak:"keep-all",animation:"fadeSlideUp .8s ease .5s both"}}>
           필기 전시장
         </h1>
         <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:14,fontWeight:300,lineHeight:2.0,color:"rgba(255,255,255,.45)",maxWidth:380,margin:"0 auto 60px",animation:"fadeSlideUp .8s ease .7s both"}}>
