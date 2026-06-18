@@ -681,7 +681,7 @@ function Modal({ item, type, onClose }) {
           {isEra ? (
             <>
               <p style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:13,color:"#c8c8c8",marginBottom:8,letterSpacing:".08em"}}>{item.num} · {item.en} · {item.period}</p>
-              <h2 style={{fontFamily:"'Pretendard',sans-serif",fontSize:26,fontWeight:400,color:"#1a1820",marginBottom:22}}>{item.title}</h2>
+              <h2 style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:30,fontWeight:400,color:"#5c5666",marginBottom:22,wordBreak:"keep-all"}}>{item.title}</h2>
               <div style={{display:"flex",flexWrap:"wrap",gap:6,marginBottom:26}}>
                 {item.keys.map(k=><span key={k} className="tag">{k}</span>)}
               </div>
@@ -739,7 +739,7 @@ function Modal({ item, type, onClose }) {
                 )}
                 <div style={{flex:1,minWidth:0}}>
                   <p style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:13,fontStyle:"italic",color:"rgba(255,255,255,.3)",marginBottom:8}}>{item.year} · {item.en}</p>
-                  <h2 style={{fontFamily:"'Pretendard',sans-serif",fontSize:22,fontWeight:400,color:"white",marginBottom:16,lineHeight:1.4}}>{item.title}</h2>
+                  <h2 style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:26,fontWeight:400,color:"white",marginBottom:16,lineHeight:1.5,wordBreak:"keep-all"}}>{item.title}</h2>
                   <div style={{display:"flex",flexWrap:"wrap",gap:6,marginBottom:16}}>
                     {item.conn.map(c=><span key={c} className="dark-tag">{c}</span>)}
                   </div>
