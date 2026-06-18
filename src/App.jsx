@@ -422,7 +422,7 @@ function EraCard({ era, onClick }) {
       <div style={{height:4,background:era.grad}}/>
       <div style={{padding:"26px 22px 22px"}}>
         <p style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:12,letterSpacing:".1em",color:"#c8c8c8",marginBottom:10}}>{era.num}</p>
-        <h3 style={{fontFamily:"'Pretendard',sans-serif",fontSize:19,fontWeight:400,color:"#1a1820",marginBottom:3,lineHeight:1.3,wordBreak:"keep-all"}}>{era.title}</h3>
+        <h3 style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:21,fontWeight:400,color:"#1a1820",marginBottom:3,lineHeight:1.4,wordBreak:"keep-all"}}>{era.title}</h3>
         <p style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:12,fontStyle:"italic",color:"#b0b0b0",marginBottom:3}}>{era.en}</p>
         <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:10,color:"#d0d0d0",letterSpacing:".05em",marginBottom:18}}>{era.period}</p>
         <div style={{display:"flex",flexWrap:"wrap",gap:5,marginBottom:18}}>
@@ -480,7 +480,7 @@ function MovieCard({ movie, onClick }) {
     <div className="movie-card reveal" data-h="1" onClick={()=>onClick(movie)} style={{background:movie.bg}}>
       <div style={{padding:"36px 28px 30px"}}>
         <p style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:12,fontStyle:"italic",letterSpacing:".06em",color:"rgba(255,255,255,.35)",marginBottom:16}}>{movie.year}</p>
-        <h3 style={{fontFamily:"'Pretendard',sans-serif",fontSize:19,fontWeight:400,color:"white",lineHeight:1.45,marginBottom:6}}>{movie.title}</h3>
+        <h3 style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:21,fontWeight:400,color:"white",lineHeight:1.5,marginBottom:6}}>{movie.title}</h3>
         <p style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:12,fontStyle:"italic",color:"rgba(255,255,255,.35)",marginBottom:24}}>{movie.en}</p>
         <div style={{display:"flex",flexWrap:"wrap",gap:6,marginBottom:24}}>
           {movie.conn.map(c=><span key={c} className="dark-tag">{c}</span>)}
