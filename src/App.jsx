@@ -35,6 +35,26 @@ html{scroll-behavior:smooth;}
 .dark-tag{display:inline-block;padding:3px 10px;border:1px solid rgba(255,255,255,.17);border-radius:20px;font-family:'Pretendard',sans-serif;font-size:10px;font-weight:300;color:rgba(255,255,255,.5);}
 .close-btn{position:absolute;top:18px;right:20px;background:none;border:none;font-size:22px;opacity:.4;transition:opacity .2s;line-height:1;}
 .close-btn:hover{opacity:.9;}
+.nav-bar{padding:0 44px;}
+.nav-links{display:flex;gap:26px;}
+.section-pad{padding:100px 44px;}
+.duo-grid{display:grid;grid-template-columns:220px 1fr;gap:80px;}
+.eras-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.movies-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.ppt-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;}
+@media(max-width:860px){
+  .eras-grid{grid-template-columns:repeat(2,1fr);}
+  .movies-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:600px){
+  .nav-bar{padding:0 18px;}
+  .nav-links{display:none;}
+  .section-pad{padding:60px 20px;}
+  .duo-grid{grid-template-columns:1fr;gap:28px;}
+  .eras-grid{grid-template-columns:1fr;}
+  .movies-grid{grid-template-columns:1fr;}
+  .ppt-grid{grid-template-columns:1fr;gap:24px;}
+}
 `;
 
 const ERAS = [
@@ -308,17 +328,17 @@ function Header() {
     ["영화","#movies"],["전시","#exhibition"],["발표","#ppt"],["마치며","#outro"]
   ];
   return (
-    <nav style={{
+    <nav className="nav-bar" style={{
       position:"fixed", top:0, left:0, right:0, zIndex:100,
       display:"flex", alignItems:"center", justifyContent:"space-between",
-      padding:"0 44px", height:54,
+      height:54,
       background:"rgba(8,8,15,.82)", backdropFilter:"blur(14px)",
       borderBottom:"1px solid rgba(255,255,255,.06)",
     }}>
       <a href="#hero" data-h="1" style={{display:"flex",alignItems:"center",textDecoration:"none"}}>
         <img src="/images/logo-dark.png" alt="감성미학" style={{height:38,width:"auto",objectFit:"contain",display:"block"}} />
       </a>
-      <div style={{display:"flex",gap:26}}>
+      <div className="nav-links">
         {nav.map(([l,h])=>(
           <a key={h} href={h} className="nav-a" data-h="1">{l}</a>
         ))}
@@ -369,8 +389,8 @@ function Hero() {
 
 function Intro() {
   return (
-    <section id="intro" style={{background:"#f7f6f2",minHeight:"100vh",display:"flex",alignItems:"center",padding:"100px 44px"}}>
-      <div style={{maxWidth:960,margin:"0 auto",width:"100%",display:"grid",gridTemplateColumns:"220px 1fr",gap:80,alignItems:"start"}}>
+    <section id="intro" className="section-pad" style={{background:"#f7f6f2",minHeight:"100vh",display:"flex",alignItems:"center"}}>
+      <div className="duo-grid" style={{maxWidth:960,margin:"0 auto",width:"100%",alignItems:"start"}}>
         <div>
           <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:10,letterSpacing:".22em",fontWeight:300,color:"#b0b0b0",marginBottom:16}}>INTRODUCTION</p>
           <h2 className="reveal" style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:40,fontWeight:300,color:"#1a1820",lineHeight:1.25}}>들어가며</h2>
@@ -430,7 +450,7 @@ function ErasSection({ onCardClick }) {
     {w:260,h:260,c:"rgba(155,246,255,.14)",t:"42%",r:"30%",anim:"float3 13s ease-in-out infinite",blur:20},
   ];
   return (
-    <section id="eras" style={{background:"#f0eff5",padding:"100px 44px",position:"relative",overflow:"hidden"}}>
+    <section id="eras" className="section-pad" style={{background:"#f0eff5",position:"relative",overflow:"hidden"}}>
       {orbs.map((o,i)=>(
         <div key={i} style={{
           position:"absolute", width:o.w, height:o.h, borderRadius:"50%",
@@ -444,7 +464,7 @@ function ErasSection({ onCardClick }) {
           <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:10,letterSpacing:".22em",fontWeight:300,color:"#b0b0b0",marginBottom:14}}>TIMELINE · 시대별 필기</p>
           <h2 className="reveal" style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:46,fontWeight:300,color:"#1a1820",lineHeight:1.2}}>원시에서<br/>현대까지</h2>
         </div>
-        <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:16}}>
+        <div className="eras-grid">
           {ERAS.map(e=><EraCard key={e.id} era={e} onClick={onCardClick}/>)}
         </div>
         <p style={{marginTop:22,fontFamily:"'Pretendard',sans-serif",fontSize:11,color:"#c0c0c0",fontWeight:300}}>
@@ -481,7 +501,7 @@ function MoviesSection({ onCardClick }) {
     {w:220,h:220,c:"rgba(255,179,198,.14)",t:"45%",l:"32%",anim:"float3 12s ease-in-out infinite",blur:18},
   ];
   return (
-    <section id="movies" style={{background:"#0d0c14",padding:"100px 44px",position:"relative",overflow:"hidden"}}>
+    <section id="movies" className="section-pad" style={{background:"#0d0c14",position:"relative",overflow:"hidden"}}>
       {orbs.map((o,i)=>(
         <div key={i} style={{
           position:"absolute", width:o.w, height:o.h, borderRadius:"50%",
@@ -495,7 +515,7 @@ function MoviesSection({ onCardClick }) {
           <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:10,letterSpacing:".22em",fontWeight:300,color:"rgba(255,255,255,.28)",marginBottom:14}}>FILMS · 수업에서 본 영화</p>
           <h2 className="reveal" style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:46,fontWeight:300,color:"white",lineHeight:1.2}}>예술가를<br/>스크린에서 만나다</h2>
         </div>
-        <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:16}}>
+        <div className="movies-grid">
           {MOVIES.map(m=><MovieCard key={m.id} movie={m} onClick={onCardClick}/>)}
         </div>
       </div>
@@ -789,8 +809,8 @@ export default function App() {
         <Intro />
         <ErasSection onCardClick={era=>setModal({item:era,type:"era"})} />
         <MoviesSection onCardClick={mv=>setModal({item:mv,type:"movie"})} />
-        <section id="exhibition" style={{background:"#f7f6f2",padding:"100px 44px"}}>
-          <div style={{maxWidth:960,margin:"0 auto",display:"grid",gridTemplateColumns:"220px 1fr",gap:80,alignItems:"center"}}>
+        <section id="exhibition" className="section-pad" style={{background:"#f7f6f2"}}>
+          <div className="duo-grid" style={{maxWidth:960,margin:"0 auto",alignItems:"center"}}>
             <div>
               <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:10,letterSpacing:".22em",fontWeight:300,color:"#b0b0b0",marginBottom:16}}>EXHIBITION · 전시</p>
               <h2 className="reveal" style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:36,fontWeight:300,color:"#1a1820",lineHeight:1.3}}>디뮤지엄<br/>〈취향가옥2〉</h2>
@@ -828,13 +848,13 @@ export default function App() {
             </div>
           </div>
         </section>
-        <section id="ppt" style={{background:"#f0eff5",padding:"100px 44px"}}>
+        <section id="ppt" className="section-pad" style={{background:"#f0eff5"}}>
           <div style={{maxWidth:960,margin:"0 auto"}}>
             <div style={{marginBottom:56}}>
               <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:10,letterSpacing:".22em",fontWeight:300,color:"#b0b0b0",marginBottom:14}}>PRESENTATIONS · 팀 발표</p>
               <h2 className="reveal" style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:46,fontWeight:300,color:"#1a1820",lineHeight:1.2}}>네 번의<br/>발표</h2>
             </div>
-            <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:32}}>
+            <div className="ppt-grid">
               {[
                 { num:"01", slug:"art-therapy", title:"학우들의 그림을 미술치료로 분석하기", cover:"/images/미술치료표지.png", body:"학우들의 그림을 분석하는 과정이었다. 얼굴의 형태, 선의 강도, 집·사람·나무의 배치에서 의미를 찾아냈다. 사람마다 그린 그림은 달랐지만 분석 결과에서 경향성이 나타난다는 게 신기했다. 아무 생각 없이 그린 것 같아도 그 안에 자신이 담긴다는 것. 미술이 가진 힘을 조금 다른 방식으로 알게 된 시간이었다." },
                 { num:"02", slug:"louvre", title:"루브르 박물관의 모든 것", cover:"/images/루브르표지.png", body:"내가 직접 다녀왔고 큐레이션도 들어본 박물관이라 조사하는 내내 신이 났다. 어떤 역사를 거쳐 만들어졌고, 어떤 작품들로 지금 빛나고 있는지를 새롭게 이해하는 과정이었다. 다음에 다시 가게 된다면 이번 조사에서 알게 된 것들을 발판 삼아 훨씬 더 깊이 돌아볼 수 있을 것 같다." },
@@ -854,7 +874,7 @@ export default function App() {
             </div>
           </div>
         </section>
-        <section id="outro" style={{background:"#08080f",padding:"120px 44px"}}>
+        <section id="outro" className="section-pad" style={{background:"#08080f"}}>
           <div style={{maxWidth:780,margin:"0 auto"}}>
             <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:10,letterSpacing:".22em",color:"rgba(255,255,255,.3)",marginBottom:28}}>OUTRO · 마치며</p>
             <h2 className="holo-text" style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:"clamp(32px,5vw,64px)",fontWeight:300,lineHeight:1.35,marginBottom:52,textAlign:"center"}}>

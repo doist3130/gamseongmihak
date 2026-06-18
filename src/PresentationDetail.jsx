@@ -30,6 +30,23 @@ function slides(slug, count) {
   return Array.from({ length: count }, (_, i) => `/images/presentations/${slug}/${i+1}.jpg`);
 }
 
+const STYLE = `
+.pd-nav{padding:0 44px;}
+.pd-hero{padding:140px 44px 60px;}
+.pd-slides-wrap{padding:0 44px 90px;}
+.pd-footer-links{padding:0 44px 100px;}
+.slides-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px;}
+@media(max-width:600px){
+  .pd-nav{padding:0 18px;}
+  .pd-hero{padding:120px 18px 50px;}
+  .pd-slides-wrap{padding:0 18px 70px;}
+  .pd-footer-links{padding:0 18px 80px;flex-wrap:wrap;}
+}
+@media(max-width:480px){
+  .slides-grid{grid-template-columns:1fr;}
+}
+`;
+
 export default function PresentationDetail() {
   const { slug } = useParams();
   const data = PRESENTATIONS[slug];
@@ -39,6 +56,13 @@ export default function PresentationDetail() {
   useEffect(() => {
     setLightboxIdx(null);
   }, [slug]);
+
+  useEffect(() => {
+    const styleEl = document.createElement("style");
+    styleEl.textContent = STYLE;
+    document.head.appendChild(styleEl);
+    return () => document.head.removeChild(styleEl);
+  }, []);
 
   useEffect(() => {
     if (lightboxIdx === null) return;
@@ -66,10 +90,10 @@ export default function PresentationDetail() {
 
   return (
     <div style={{minHeight:"100vh",background:"#f0eff5",display:"flex",flexDirection:"column"}}>
-      <nav style={{
+      <nav className="pd-nav" style={{
         position:"fixed",top:0,left:0,right:0,zIndex:100,
         display:"flex",alignItems:"center",justifyContent:"space-between",
-        padding:"0 44px",height:54,
+        height:54,
         background:"rgba(240,239,245,.92)",backdropFilter:"blur(14px)",
         borderBottom:"1px solid rgba(0,0,0,.06)",
       }}>
@@ -85,7 +109,7 @@ export default function PresentationDetail() {
         </p>
       </nav>
 
-      <div style={{padding:"140px 44px 60px",textAlign:"center"}}>
+      <div className="pd-hero" style={{textAlign:"center"}}>
         <p style={{
           fontFamily:"'Pretendard',sans-serif",fontSize:10,letterSpacing:".28em",fontWeight:300,
           color:"#b0b0b0",marginBottom:22,
@@ -110,11 +134,8 @@ export default function PresentationDetail() {
         </p>
       </div>
 
-      <div style={{padding:"0 44px 90px",flex:1}}>
-        <div style={{
-          maxWidth:880,margin:"0 auto",
-          display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(320px,1fr))",gap:18,
-        }}>
+      <div className="pd-slides-wrap" style={{flex:1}}>
+        <div className="slides-grid" style={{maxWidth:880,margin:"0 auto"}}>
           {deckSlides.map((src, i) => (
             <div key={src} style={{position:"relative"}}>
               <img
@@ -144,7 +165,7 @@ export default function PresentationDetail() {
         </div>
       </div>
 
-      <div style={{padding:"0 44px 100px",display:"flex",justifyContent:"center",gap:14}}>
+      <div className="pd-footer-links" style={{display:"flex",justifyContent:"center",gap:14}}>
         <Link to={`/presentation/${prevSlug}`} style={{
           fontFamily:"'Pretendard',sans-serif",fontSize:11,fontWeight:300,letterSpacing:".08em",
           color:"#888",textDecoration:"none",padding:"12px 22px",border:"1px solid rgba(0,0,0,.12)",borderRadius:2,

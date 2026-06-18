@@ -35,6 +35,18 @@ const STYLE = `
   transition:transform .35s ease, box-shadow .35s ease;
 }
 .collage-grid img:hover{transform:scale(1.015) translateY(-3px);box-shadow:0 16px 34px rgba(0,0,0,.55);}
+.eg-nav{padding:0 44px;}
+.eg-hero{padding:140px 44px 70px;}
+.eg-section{padding:0 44px 80px;}
+.eg-footer{padding:20px 44px 100px;}
+@media(max-width:600px){
+  .eg-nav{padding:0 18px;}
+  .eg-hero{padding:120px 18px 56px;}
+  .eg-section{padding:0 18px 56px;}
+  .eg-footer{padding:16px 18px 80px;}
+  .collage-grid{column-count:2;column-gap:8px;}
+  .collage-grid img{margin-bottom:8px;}
+}
 `;
 
 export default function ExhibitionGallery() {
@@ -60,10 +72,10 @@ export default function ExhibitionGallery() {
 
   return (
     <div style={{minHeight:"100vh",background:"#08080f"}}>
-      <nav style={{
+      <nav className="eg-nav" style={{
         position:"fixed",top:0,left:0,right:0,zIndex:100,
         display:"flex",alignItems:"center",justifyContent:"space-between",
-        padding:"0 44px",height:54,
+        height:54,
         background:"rgba(8,8,15,.82)",backdropFilter:"blur(14px)",
         borderBottom:"1px solid rgba(255,255,255,.06)",
       }}>
@@ -79,7 +91,7 @@ export default function ExhibitionGallery() {
         </p>
       </nav>
 
-      <div style={{padding:"140px 44px 70px",textAlign:"center"}}>
+      <div className="eg-hero" style={{textAlign:"center"}}>
         <p style={{
           fontFamily:"'Pretendard',sans-serif",fontSize:10,letterSpacing:".28em",fontWeight:300,
           color:"rgba(255,255,255,.22)",marginBottom:24,
@@ -103,7 +115,7 @@ export default function ExhibitionGallery() {
       </div>
 
       {SECTIONS.map((sec, idx) => (
-        <section key={sec.slug} style={{padding:"0 44px 80px"}}>
+        <section key={sec.slug} className="eg-section">
           <div style={{maxWidth:1180,margin:"0 auto"}}>
             <div style={{display:"flex",alignItems:"baseline",gap:14,marginBottom:26}}>
               <span style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:13,color:"rgba(200,182,255,.5)",letterSpacing:".1em"}}>
@@ -131,7 +143,7 @@ export default function ExhibitionGallery() {
         </section>
       ))}
 
-      <div style={{padding:"20px 44px 100px",textAlign:"center"}}>
+      <div className="eg-footer" style={{textAlign:"center"}}>
         <Link to="/" data-h="1" style={{
           display:"inline-flex",alignItems:"center",gap:10,
           padding:"12px 24px",border:"1px solid rgba(255,255,255,.16)",borderRadius:2,
