@@ -192,6 +192,21 @@ export default function ExhibitionGallery() {
           }}>
             {lightboxIdx+1} / {ALL_IMAGES.length}
           </span>
+          <a
+            href={ALL_IMAGES[lightboxIdx]}
+            download
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              position:"fixed",top:24,right:76,background:"rgba(255,255,255,.08)",
+              border:"1px solid rgba(255,255,255,.2)",borderRadius:20,
+              color:"rgba(255,255,255,.75)",fontSize:11,lineHeight:1,
+              padding:"8px 16px",textDecoration:"none",
+              fontFamily:"'Pretendard',sans-serif",fontWeight:300,
+              display:"flex",alignItems:"center",gap:6,
+            }}
+          >
+            ↓ 다운로드
+          </a>
           <button
             onClick={() => setLightboxIdx(null)}
             style={{
