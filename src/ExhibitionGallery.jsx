@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import JSZip from "jszip";
 
 const SECTIONS = [
   { slug:"best", title:"가장 마음에 들었던 순간들", en:"Best Shots", count:13, feature:true },
@@ -51,6 +52,35 @@ const STYLE = `
 
 export default function ExhibitionGallery() {
   const [lightboxIdx, setLightboxIdx] = useState(null);
+  const [zipping, setZipping] = useState(false);
+  const [zipProgress, setZipProgress] = useState(0);
+
+  async function downloadAll() {
+    if (zipping) return;
+    setZipping(true);
+    setZipProgress(0);
+    try {
+      const zip = new JSZip();
+      for (let i = 0; i < ALL_IMAGES.length; i++) {
+        const src = ALL_IMAGES[i];
+        const res = await fetch(src);
+        const blob = await res.blob();
+        zip.file(src.replace("/images/exhibition/", "").replace(/\//g, "_"), blob);
+        setZipProgress(Math.round(((i + 1) / ALL_IMAGES.length) * 100));
+      }
+      const content = await zip.generateAsync({ type: "blob" });
+      const url = URL.createObjectURL(content);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "취향가옥2-전시사진.zip";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    } finally {
+      setZipping(false);
+    }
+  }
 
   useEffect(() => {
     const styleEl = document.createElement("style");
@@ -112,6 +142,20 @@ export default function ExhibitionGallery() {
           "아름다움은 사물들 자체 안에 존재하는 성질이 아니다. 그것은 오직 사물들을 관찰하는 정신 안에만 존재하며,
           각각의 정신은 서로 다른 아름다움을 지각한다." 그날 눈에 담아온 {TOTAL}장의 장면들.
         </p>
+        <button
+          onClick={downloadAll}
+          disabled={zipping}
+          style={{
+            marginTop:30,display:"inline-flex",alignItems:"center",gap:10,
+            padding:"12px 26px",border:"1px solid rgba(255,255,255,.18)",borderRadius:20,
+            background:zipping?"rgba(255,255,255,.04)":"rgba(255,255,255,.06)",
+            color:"rgba(255,255,255,.7)",fontFamily:"'Pretendard',sans-serif",
+            fontSize:12,fontWeight:300,letterSpacing:".04em",
+            cursor:zipping?"default":"pointer",
+          }}
+        >
+          {zipping ? `압축 중... ${zipProgress}%` : `↓ 전체 ${TOTAL}장 한 번에 다운로드`}
+        </button>
       </div>
 
       {SECTIONS.map((sec, idx) => (
