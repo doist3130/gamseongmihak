@@ -736,12 +736,12 @@ function Modal({ item, type, onClose }) {
             </>
           ) : (
             <>
-              <div style={{display:"flex",gap:22,marginBottom:22,alignItems:"flex-start"}}>
+              <div style={{display:"flex",gap:22,marginBottom:22,alignItems:"stretch"}}>
                 {item.poster && (
                   <img src={item.poster} alt={item.title} style={{
                     width:110,flexShrink:0,borderRadius:3,
                     boxShadow:"0 8px 24px rgba(0,0,0,.5)",objectFit:"cover",
-                    aspectRatio:"2/3",
+                    height:"100%",
                   }}/>
                 )}
                 <div style={{flex:1,minWidth:0}}>
