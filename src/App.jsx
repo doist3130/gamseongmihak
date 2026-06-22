@@ -42,6 +42,15 @@ html{scroll-behavior:smooth;}
 .eras-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
 .movies-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
 .ppt-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;}
+.movie-modal-grid{
+  display:grid;margin-bottom:22px;gap:16px 22px;
+  grid-template-columns:110px 1fr;
+  grid-template-areas:"poster meta" "poster tags" "poster plot";
+}
+.movie-modal-grid .mm-poster{grid-area:poster;width:100%;height:100%;}
+.movie-modal-grid .mm-meta{grid-area:meta;}
+.movie-modal-grid .mm-tags{grid-area:tags;}
+.movie-modal-grid .mm-plot{grid-area:plot;}
 @media(max-width:860px){
   .eras-grid{grid-template-columns:repeat(2,1fr);}
   .movies-grid{grid-template-columns:repeat(2,1fr);}
@@ -54,6 +63,11 @@ html{scroll-behavior:smooth;}
   .eras-grid{grid-template-columns:1fr;}
   .movies-grid{grid-template-columns:1fr;}
   .ppt-grid{grid-template-columns:1fr;gap:24px;}
+  .movie-modal-grid{
+    grid-template-columns:1fr;
+    grid-template-areas:"meta" "tags" "poster" "plot";
+  }
+  .movie-modal-grid .mm-poster{height:auto;max-width:220px;aspect-ratio:2/3;margin:6px auto 0;}
 }
 `;
 
@@ -736,27 +750,25 @@ function Modal({ item, type, onClose }) {
             </>
           ) : (
             <>
-              <div style={{display:"flex",gap:22,marginBottom:22,alignItems:"stretch"}}>
+              <div className="movie-modal-grid">
+                <div className="mm-meta">
+                  <p style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:13,fontStyle:"italic",color:"rgba(255,255,255,.3)",marginBottom:8}}>{item.year} · {item.en}</p>
+                  <h2 style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:26,fontWeight:400,color:"white",marginBottom:0,lineHeight:1.5,wordBreak:"keep-all"}}>{item.title}</h2>
+                </div>
+                <div className="mm-tags" style={{display:"flex",flexWrap:"wrap",gap:6,alignSelf:"start"}}>
+                  {item.conn.map(c=><span key={c} className="dark-tag">{c}</span>)}
+                </div>
                 {item.poster && (
-                  <img src={item.poster} alt={item.title} style={{
-                    width:110,flexShrink:0,borderRadius:3,
-                    boxShadow:"0 8px 24px rgba(0,0,0,.5)",objectFit:"cover",
-                    height:"100%",
+                  <img className="mm-poster" src={item.poster} alt={item.title} style={{
+                    borderRadius:3,boxShadow:"0 8px 24px rgba(0,0,0,.5)",objectFit:"cover",
                   }}/>
                 )}
-                <div style={{flex:1,minWidth:0}}>
-                  <p style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:13,fontStyle:"italic",color:"rgba(255,255,255,.3)",marginBottom:8}}>{item.year} · {item.en}</p>
-                  <h2 style={{fontFamily:"'HsBombaram30',sans-serif",fontSize:26,fontWeight:400,color:"white",marginBottom:16,lineHeight:1.5,wordBreak:"keep-all"}}>{item.title}</h2>
-                  <div style={{display:"flex",flexWrap:"wrap",gap:6,marginBottom:16}}>
-                    {item.conn.map(c=><span key={c} className="dark-tag">{c}</span>)}
+                {item.plot && (
+                  <div className="mm-plot">
+                    <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:10,letterSpacing:".18em",color:"rgba(255,255,255,.3)",marginBottom:8}}>줄거리</p>
+                    <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:13,fontWeight:300,lineHeight:1.95,color:"rgba(255,255,255,.5)"}}>{item.plot}</p>
                   </div>
-                  {item.plot && (
-                    <div>
-                      <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:10,letterSpacing:".18em",color:"rgba(255,255,255,.3)",marginBottom:8}}>줄거리</p>
-                      <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:13,fontWeight:300,lineHeight:1.95,color:"rgba(255,255,255,.5)"}}>{item.plot}</p>
-                    </div>
-                  )}
-                </div>
+                )}
               </div>
               <div style={{marginBottom:20}}>
                 <p style={{fontFamily:"'Pretendard',sans-serif",fontSize:10,letterSpacing:".18em",color:"rgba(255,255,255,.3)",marginBottom:12}}>느낀 점</p>
